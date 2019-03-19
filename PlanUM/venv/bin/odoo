@@ -1,0 +1,4 @@
+#!/home/claudia/MIEI/semestre_2/LEI/PlanUM/venv/bin/python3
+# EASY-INSTALL-SCRIPT: 'odoo==12.0.post20190314','odoo'
+__requires__ = 'odoo==12.0.post20190314'
+__import__('pkg_resources').run_script('odoo==12.0.post20190314', 'odoo')
