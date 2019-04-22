@@ -1,0 +1,103 @@
+<?xml version="1.0"?>
+<odoo>
+	<!-- PlanUM App Menu -->
+	<menuitem id="menu_planum"
+		name="PlanUM" />
+	<!-- Ação para consultar alunos -->
+	<act_window id="action_aluno"
+		name="Alunos"
+		res_model="planum.aluno"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar alunos -->
+	<menuitem id="menu_aluno"
+		name="Alunos"
+		parent="menu_planum"
+		action="action_aluno"
+	/>
+	<!-- Ação para consultar perfil do aluno -->
+	<act_window id="action_aluno_perfil"
+		name="Perfil"
+		res_model="planum.aluno"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar perfil do aluno -->
+	<menuitem id="menu_aluno_perfil"
+		name="Perfil"
+		parent="menu_planum"
+		action="action_aluno_perfil"
+		groups="planum_group_aluno"/>
+	/>
+	<!-- Ação para consultar docentes -->
+	<act_window id="action_docente"
+		name="Docentes"
+		res_model="planum.docente"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar docentes-->
+	<menuitem id="menu_docente"
+		name="Docentes"
+		parent="menu_planum"
+		action="action_docente"
+	/>
+	<!-- Ação para consultar o plano de estudos -->
+	<act_window id="action_plano_estudos"
+		name="Planos de Estudos"
+		res_model="planum.plano_estudos"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar o plano de estudos -->
+	<menuitem id="menu_plano_estudos"
+		name="Planos de Estudos"
+		parent="menu_planum"
+		action="action_plano_estudos"
+	/>
+	<!-- Ação para consultar os cursos -->
+	<act_window id="action_curso"
+		name="Cursos"
+		res_model="planum.curso"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar os cursos -->
+	<menuitem id="menu_curso"
+		name="Cursos"
+		parent="menu_planum"
+		action="action_curso"
+	/>
+	<!-- Ação para consultar os planos de curso -->
+	<act_window id="action_plano_curso"
+		name="Planos de Curso"
+		res_model="planum.plano_curso"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar os planos de curso -->
+	<menuitem id="menu_plano_curso"
+		name="Planos de Curso"
+		parent="menu_planum"
+		action="action_plano_curso"
+	/>
+	<!-- Ação para consultar as UCs -->
+	<act_window id="action_uc"
+		name="Unidades Curriculares"
+		res_model="planum.uc"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar as UCs-->
+	<menuitem id="menu_uc"
+		name="Unidades Curriculares"
+		parent="menu_planum"
+		action="action_uc"
+	/>
+	<!-- Ação para consultar as Direções de Curso -->
+	<act_window id="action_direcao_curso"
+		name="Direções de Curso"
+		res_model="planum.direcao_curso"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar as Direções de Curso-->
+	<menuitem id="menu_direcao_curso"
+		name="Direções de Curso"
+		parent="menu_planum"
+		action="action_direcao_curso"
+	/>
+</odoo>

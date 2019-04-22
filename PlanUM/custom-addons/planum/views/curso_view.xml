@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_curso" model="ir.ui.view">
+		<field name="name">Curso Form</field>
+		<field name="model">planum.curso</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<!-- Buttons will go here -->
+					<!--<button name="button_check_isbn" type="object"
+						string="Check ISBN" /> -->
+				</header>
+				<sheet>
+					<!-- Content goes here: -->
+					<group name="group_top">
+						<field name="codigo" />
+						<field name="designacao" />
+						<field name="active" />
+						<field name="tipo" />
+						<field name="direcao_curso" />
+						<field name="alunos" />
+						<field name="planos_curso" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_tree_curso" model="ir.ui.view">
+		<field name="name">Lista de Cursos</field>
+		<field name="model">planum.curso</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="codigo" />
+				<field name="designacao" />
+				<field name="tipo" />
+			</tree>
+		</field>
+	</record>	
+	<record id="view_search_curso" model="ir.ui.view">
+		<field name="name">Filtros do Curso</field>
+		<field name="model">planum.curso</field>
+		<field name="arch" type="xml">
+			<search>
+              <field name="codigo" string="Codigo"
+                  filter_domain="[('codigo','ilike',self)]"/>
+              <field name="designacao" string="Designação"
+                  filter_domain="[('designacao','ilike',self)]"/>
+            </search>
+		</field>
+	</record>
+</odoo>

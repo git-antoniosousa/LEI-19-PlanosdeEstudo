@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_docente" model="ir.ui.view">
+		<field name="name">Docente Form</field>
+		<field name="model">planum.docente</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<!-- Buttons will go here -->
+					<!--<button name="button_check_isbn" type="object"
+						string="Check ISBN" /> -->
+				</header>
+				<sheet>
+					<!-- Content goes here: -->
+					<group name="group_top">
+						<field name="nome" />
+						<field name="nr_mecanografico" />
+						<field name="ucs" widget="many2many_tags" string="Unidades Curriculares" />
+						<field name="direcoes_curso" widget="many2many_tags" string="Direções de Curso" />
+						<field name="active" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_tree_docente" model="ir.ui.view">
+		<field name="name">Lista de Docentes</field>
+		<field name="model">planum.docente</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="nome"/>
+				<field name="nr_mecanografico" />
+			</tree>
+		</field>
+	</record>	
+	<record id="view_search_docente" model="ir.ui.view">
+		<field name="name">Filtros do Docente</field>
+		<field name="model">planum.docente</field>
+		<field name="arch" type="xml">
+			<search>
+              <field name="nome" string="Nome"
+                  filter_domain="[('nome','ilike',self)]"/>
+              <field name="nr_mecanografico" string="Nº Mecanográfico"
+                  filter_domain="[('nr_mecanografico','ilike',self)]"/>
+            </search>
+		</field>
+	</record>
+</odoo>

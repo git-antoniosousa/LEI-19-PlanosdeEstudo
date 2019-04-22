@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_uc_plano_curso" model="ir.ui.view">
+		<field name="name">UC do Plano de Curso Form</field>
+		<field name="model">planum.uc_plano_curso</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<!-- Buttons will go here -->
+					<!--<button name="button_check_isbn" type="object"
+						string="Check ISBN" /> -->
+				</header>
+				<sheet>
+					<!-- Content goes here: -->
+					<group name="group_top">
+						<field name="codigo_plano" />
+						<field name="ano" />
+						<field name="fator" />
+						<field name="plano_curso_id" />
+						<field name="docentes" widget="many2many_tags" />
+						<field name="active" />
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_tree_uc_plano_curso" model="ir.ui.view">
+		<field name="name">Lista de UCs do Plano de Curso</field>
+		<field name="model">planum.uc_plano_curso</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="codigo_plano" />
+				<field name="ano" />
+				<field name="fator" />
+			</tree>
+		</field>
+	</record>	
+	<record id="view_search_uc_plano_curso" model="ir.ui.view">
+		<field name="name">Filtros da UC do Plano de Curso</field>
+		<field name="model">planum.uc_plano_curso</field>
+		<field name="arch" type="xml">
+			<search>
+              <field name="codigo_plano" string="Código"
+                  filter_domain="[('codigo_plano','ilike',self)]"/>
+            </search>
+		</field>
+	</record>
+</odoo>

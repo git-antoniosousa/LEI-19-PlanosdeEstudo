@@ -1,5 +1,0 @@
-odoo.egg-info/PKG-INFO
-odoo.egg-info/SOURCES.txt
-odoo.egg-info/dependency_links.txt
-odoo.egg-info/requires.txt
-odoo.egg-info/top_level.txt

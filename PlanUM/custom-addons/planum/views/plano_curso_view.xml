@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_plano_curso" model="ir.ui.view">
+		<field name="name">Plano de Curso Form</field>
+		<field name="model">planum.plano_curso</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+					<!-- Buttons will go here -->
+					<!--<button name="button_check_isbn" type="object"
+						string="Check ISBN" /> -->
+				</header>
+				<sheet>
+					<!-- Content goes here: -->
+					<group name="group_top">
+						<field name="data_inicio" string="Data de Início" />
+						<field name="data_fim" string="Data de Fim" />
+						<field name="curso_id" string="Curso" />
+						<field name="ucs" string="Unidades Curriculares"/>
+						<field name="active" />
+						<!-- Filtrar apenas os planos do curso desta direção de curso -->
+						<filter name="filter_curso"
+                        domain="[('curso_id', '=', self.curso_id)]"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_tree_plano_curso" model="ir.ui.view">
+		<field name="name">Lista de Planos de Curso</field>
+		<field name="model">planum.plano_curso</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="data_inicio" string="Data de Início" />
+				<field name="data_fim" string="Data de Fim" />
+			</tree>
+		</field>
+	</record>
+</odoo>
