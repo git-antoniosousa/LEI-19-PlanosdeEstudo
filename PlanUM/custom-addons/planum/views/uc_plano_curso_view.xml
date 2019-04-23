@@ -17,8 +17,8 @@
 						<field name="ano" />
 						<field name="semestre" />
 						<field name="fator" />
-						<field name="plano_curso_id" />
 						<field name="docentes" widget="many2many_tags" />
+						<field name="uc_id" />
 						<field name="active" />
 					</group>
 				</sheet>

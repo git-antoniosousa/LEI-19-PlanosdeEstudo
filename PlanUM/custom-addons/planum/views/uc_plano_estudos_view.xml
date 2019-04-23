@@ -16,6 +16,7 @@
 						<field name="nota" />
 						<field name="ano_conclusao" />
 						<field name="plano_estudos_id" />
+						<field name="uc_plano_curso_id" />
 						<field name="active" />
 					</group>
 				</sheet>

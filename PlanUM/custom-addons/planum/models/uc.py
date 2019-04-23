@@ -10,3 +10,4 @@ class UC (models.Model):
     designacao = fields.Char('Designação')
     ects=fields.Integer('Créditos ECTS')
     obrigatoria=fields.Boolean('Obrigatória?')
+    ucs_plano_curso = fields.One2many('planum.uc_plano_curso', 'uc_id', 'UCs de Planos de Curso')

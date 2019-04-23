@@ -17,6 +17,7 @@
 						<field name="designacao" />
 						<field name="ects" />
 						<field name="obrigatoria" />
+						<field name="ucs_plano_curso" />
 						<field name="active" />
 					</group>
 				</sheet>
