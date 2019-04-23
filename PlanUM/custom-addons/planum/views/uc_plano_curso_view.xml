@@ -15,6 +15,7 @@
 					<group name="group_top">
 						<field name="codigo_plano" />
 						<field name="ano" />
+						<field name="semestre" />
 						<field name="fator" />
 						<field name="plano_curso_id" />
 						<field name="docentes" widget="many2many_tags" />
@@ -31,6 +32,7 @@
 			<tree>
 				<field name="codigo_plano" />
 				<field name="ano" />
+				<field name="semestre" />
 				<field name="fator" />
 			</tree>
 		</field>

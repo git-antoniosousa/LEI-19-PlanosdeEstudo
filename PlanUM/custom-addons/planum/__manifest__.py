@@ -39,6 +39,6 @@
     # the module should be featured as an app in the apps list
     'application': True,
 
-    # Intsall automatically
+    # Install automatically
     'auto_install': True,
 }

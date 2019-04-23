@@ -18,9 +18,6 @@
 						<field name="curso_id" string="Curso" />
 						<field name="ucs" string="Unidades Curriculares"/>
 						<field name="active" />
-						<!-- Filtrar apenas os planos do curso desta direção de curso -->
-						<filter name="filter_curso"
-                        domain="[('curso_id', '=', self.curso_id)]"/>
 					</group>
 				</sheet>
 			</form>
