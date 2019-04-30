@@ -19,7 +19,7 @@
 	<act_window id="action_aluno_perfil"
 		name="Perfil"
 		res_model="planum.aluno"
-		view_mode="tree,form"
+		view_mode="form,tree"
 	/>
 	<!-- Item do menu para consultar perfil do aluno -->
 	<menuitem id="menu_aluno_perfil"
