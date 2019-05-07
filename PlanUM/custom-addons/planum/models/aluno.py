@@ -29,14 +29,12 @@ class Aluno(models.Model):
         })
 
         for uc in plano_curso.ucs:
-            new_uc = uc_plano_estudos.create({
+            uc_plano_estudos.create({
                 'nota':0,
                 'ano_conclusao':0,
                 'plano_estudos_id':plano_estudos.id,
                 'uc_plano_curso_id':uc.id,
             })
-
-
 
         # Define plano de estudos
         vals['plano_estudos_id'] = plano_estudos.id
@@ -46,7 +44,7 @@ class Aluno(models.Model):
         # Add security group to aluno
         security_group = self.env.ref('planum.planum_group_aluno')
         security_group.write({
-            'users': [(4, res.user_id.id)]
+            'users': [(4, new_record.id)]
         })
 
         return new_record

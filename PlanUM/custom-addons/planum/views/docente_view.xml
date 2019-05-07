@@ -28,7 +28,6 @@
 						<field name="name" />
 						<field name="nr_mecanografico" />
 						<field name="ucs" widget="many2many_tags" string="Unidades Curriculares" />
-						<field name="direcoes_curso" widget="many2many_tags" string="Direções de Curso" />
 						<field name="active" groups="planum.planum_group_admin"/>
 					</group>
 				</sheet>

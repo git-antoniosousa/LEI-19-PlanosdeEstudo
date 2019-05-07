@@ -4,6 +4,7 @@ class Curso(models.Model):
     _name = 'planum.curso'
     _description = 'Curso'
     _order = 'designacao asc'
+    _rec_name = 'designacao'
     active = fields.Boolean('Active?', default=True)
 
     codigo = fields.Char('Código Curso')
