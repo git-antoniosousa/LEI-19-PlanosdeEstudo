@@ -9,18 +9,25 @@
 					<!-- Buttons will go here -->
 					<!--<button name="button_check_isbn" type="object"
 						string="Check ISBN" /> -->
+                    <button name="desativar"
+                        type="object"
+                        string="Desativar"
+                        attrs="{'invisible':[('active','=',False)]}"
+                        class="oe_highlight" />
+                    <button name="ativar"
+                        type="object"
+                        string="Ativar"
+                        attrs="{'invisible':[('active','=',True)]}"
+                        class="oe_highlight" />
 				</header>
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
 						<field name="codigo" />
 						<field name="designacao" />
-						<field name="active" />
 						<field name="tipo" />
-						<field name="direcao_curso" />
-						<field name="alunos" />
-						<field name="planos_curso" />
-					</group>
+                        <field name="active" readonly="1"/>
+                    </group>
 				</sheet>
 			</form>
 		</field>
@@ -30,9 +37,10 @@
 		<field name="model">planum.curso</field>
 		<field name="arch" type="xml">
 			<tree>
-				<field name="codigo" />
+				<field name="codigo"/>
 				<field name="designacao" />
 				<field name="tipo" />
+                <field name="active" />
 			</tree>
 		</field>
 	</record>	

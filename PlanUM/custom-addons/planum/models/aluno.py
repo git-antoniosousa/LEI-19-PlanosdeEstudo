@@ -4,10 +4,10 @@ class Aluno(models.Model):
     _inherit='res.partner'
     _name = 'planum.aluno'
     _description = 'Aluno'
-    _order = 'nome desc'
+    _order = 'name desc'
     active = fields.Boolean('Active?', default=True)
 
-    nome=fields.Char('Nome')
+    name=fields.Char('Nome')
     nr_mecanografico=fields.Char('Nº Mecanográfico')
     media_acesso=fields.Float('Média Acesso',(5,3))
     estatuto=fields.Char('Estatuto')
@@ -19,9 +19,27 @@ class Aluno(models.Model):
     def create(self, vals):
         curso_id = vals['curso_id']
         curso = self.env['planum.curso'].browse(curso_id)
+        uc_plano_estudos = self.env['planum.uc_plano_estudos']
+        plano_curso=self.env['planum.plano_curso'].browse(curso.plano_atual())
+
+        # Criar plano de estudos e UCs plano estudo
+        plano_estudos = self.env['planum.plano_estudos'].create({
+            'media_licenciatura': 0,
+            'media_parcial': 0
+        })
+
+        for uc in plano_curso.ucs:
+            new_uc = uc_plano_estudos.create({
+                'nota':0,
+                'ano_conclusao':0,
+                'plano_estudos_id':plano_estudos.id,
+                'uc_plano_curso_id':uc.id,
+            })
+
+
 
         # Define plano de estudos
-        vals['plano_estudos_id'] = curso.plano_atual()
+        vals['plano_estudos_id'] = plano_estudos.id
 
         new_record = super().create(vals)
 
@@ -32,3 +50,11 @@ class Aluno(models.Model):
         })
 
         return new_record
+
+    @api.one
+    def desativar(self):
+        self.active = False
+
+    @api.one
+    def ativar(self):
+        self.active = True

@@ -9,12 +9,23 @@
 					<!-- Buttons will go here -->
 					<!--<button name="button_check_isbn" type="object"
 						string="Check ISBN" /> -->
+                     <button name="desativar"
+                        type="object"
+                        string="Desativar"
+                        attrs="{'invisible':[('active','=',False)]}"
+                        groups="planum.planum_group_admin"
+                        class="oe_highlight" />
+                    <button name="ativar"
+                        type="object"
+                        string="Ativar"
+                        attrs="{'invisible':[('active','=',True)]}"
+                        class="oe_highlight" />
 				</header>
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
 						<group name="group_left">
-							<field name="nome" />
+							<field name="name" />
 							<field name="nr_mecanografico" />
 							<field name="media_acesso" />
 							<field name="estatuto" />
@@ -34,7 +45,7 @@
 		<field name="model">planum.aluno</field>
 		<field name="arch" type="xml">
 			<tree>
-				<field name="nome"/>
+				<field name="name"/>
 				<field name="nr_mecanografico" />
 				<field name="curso_id" />
 				<field name="ano"/>
@@ -46,8 +57,8 @@
 		<field name="model">planum.aluno</field>
 		<field name="arch" type="xml">
 			<search>
-              <field name="nome" string="Nome"
-                  filter_domain="[('nome','ilike',self)]"/>
+              <field name="name" string="Nome"
+                  filter_domain="[('name','ilike',self)]"/>
               <field name="nr_mecanografico" string="Nº Mecanográfico"
                   filter_domain="[('nr_mecanografico','ilike',self)]"/>
               <field name="curso_id" string="Curso"

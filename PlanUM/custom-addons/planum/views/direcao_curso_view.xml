@@ -14,7 +14,7 @@
 					<!-- Content goes here: -->
 					<group name="group_top">
 						<field name="codigo" />
-						<field name="curso_id" widget="many2many_tags" string="Curso" />
+						<field name="curso_id" string="Curso" />
 						<field name="docentes" />
 						<field name="active" />
 					</group>

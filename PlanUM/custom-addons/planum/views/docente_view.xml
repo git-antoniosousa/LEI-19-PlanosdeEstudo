@@ -9,15 +9,27 @@
 					<!-- Buttons will go here -->
 					<!--<button name="button_check_isbn" type="object"
 						string="Check ISBN" /> -->
+                     <button name="desativar"
+                        type="object"
+                        string="Desativar"
+                        attrs="{'invisible':[('active','=',False)]}"
+                        groups="planum.planum_group_admin"
+                        class="oe_highlight" />
+                    <button name="ativar"
+                        type="object"
+                        string="Ativar"
+                        attrs="{'invisible':[('active','=',True)]}"
+                        groups="planum.planum_group_admin"
+                        class="oe_highlight" />
 				</header>
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
-						<field name="nome" />
+						<field name="name" />
 						<field name="nr_mecanografico" />
 						<field name="ucs" widget="many2many_tags" string="Unidades Curriculares" />
 						<field name="direcoes_curso" widget="many2many_tags" string="Direções de Curso" />
-						<field name="active" />
+						<field name="active" groups="planum.planum_group_admin"/>
 					</group>
 				</sheet>
 			</form>
@@ -28,7 +40,7 @@
 		<field name="model">planum.docente</field>
 		<field name="arch" type="xml">
 			<tree>
-				<field name="nome"/>
+				<field name="name"/>
 				<field name="nr_mecanografico" />
 			</tree>
 		</field>
@@ -38,8 +50,8 @@
 		<field name="model">planum.docente</field>
 		<field name="arch" type="xml">
 			<search>
-              <field name="nome" string="Nome"
-                  filter_domain="[('nome','ilike',self)]"/>
+              <field name="name" string="Nome"
+                  filter_domain="[('name','ilike',self)]"/>
               <field name="nr_mecanografico" string="Nº Mecanográfico"
                   filter_domain="[('nr_mecanografico','ilike',self)]"/>
             </search>

@@ -21,6 +21,14 @@ class Curso(models.Model):
         for plano in planos_curso:
             if not max_date or plano.data_fim >= max_date:
                 max_date = plano.data_fim
-                plano_atual = plano
+                plano_atual = plano.id
 
         return plano_atual
+
+    @api.one
+    def desativar(self):
+        self.active=False
+
+    @api.one
+    def ativar(self):
+        self.active = True

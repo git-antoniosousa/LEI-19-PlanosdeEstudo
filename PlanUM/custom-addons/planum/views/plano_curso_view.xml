@@ -15,9 +15,9 @@
 					<group name="group_top">
 						<field name="data_inicio" string="Data de Início" />
 						<field name="data_fim" string="Data de Fim" />
-						<field name="curso_id" string="Curso" />
+						<field name="curso_id" string="Curso"/>
+						<field name="active" readonly="1"/>
 						<field name="ucs" string="Unidades Curriculares"/>
-						<field name="active" />
 					</group>
 				</sheet>
 			</form>
@@ -28,8 +28,10 @@
 		<field name="model">planum.plano_curso</field>
 		<field name="arch" type="xml">
 			<tree>
+                <field name="curso_id" string="Curso"/>
 				<field name="data_inicio" string="Data de Início" />
 				<field name="data_fim" string="Data de Fim" />
+                <field name="active"/>
 			</tree>
 		</field>
 	</record>

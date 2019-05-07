@@ -13,12 +13,11 @@
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
+                        <field name="uc_id" />
 						<field name="codigo_plano" />
 						<field name="ano" />
 						<field name="semestre" />
 						<field name="fator" />
-						<field name="docentes" widget="many2many_tags" />
-						<field name="uc_id" />
 						<field name="active" />
 					</group>
 				</sheet>
@@ -30,6 +29,7 @@
 		<field name="model">planum.uc_plano_curso</field>
 		<field name="arch" type="xml">
 			<tree>
+                <field name="uc_id" />
 				<field name="codigo_plano" />
 				<field name="ano" />
 				<field name="semestre" />

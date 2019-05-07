@@ -14,10 +14,15 @@
 					<!-- Content goes here: -->
 					<group name="group_top">
 						<field name="aluno" />
-						<field name="ucs" string="Unidades Curriculares"/>
+						<field name="ucs" string="Unidades Curriculares">
+                            <tree>
+                                <field name="nota" />
+						        <field name="ano_conclusao" />
+                            </tree>
+                        </field>
 						<field name="media_parcial" />
 						<field name="media_licenciatura" />
-						<field name="active" />
+						<field name="active" groups="planum.planum_group_admin"/>
 					</group>
 				</sheet>
 			</form>
