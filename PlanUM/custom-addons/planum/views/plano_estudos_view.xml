@@ -13,7 +13,7 @@
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
-						<field name="aluno" />
+						<field name="aluno"/>
 						<field name="ucs" string="Unidades Curriculares">
                             <tree>
                                 <field name="nota" />

@@ -16,7 +16,7 @@
                         <field name="uc_id" />
 						<field name="codigo_plano" />
 						<field name="ano" />
-						<field name="semestre" />
+						<field name="semestre"  widget="radio" />
 						<field name="fator" />
 						<field name="active" />
 					</group>

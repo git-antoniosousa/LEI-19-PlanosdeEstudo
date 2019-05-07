@@ -10,8 +10,8 @@ class Aluno(models.Model):
     name=fields.Char('Nome')
     nr_mecanografico=fields.Char('Nº Mecanográfico')
     media_acesso=fields.Float('Média Acesso',(5,3))
-    estatuto=fields.Char('Estatuto')
-    ano = fields.Integer('Ano')
+    estatuto=fields.Selection([(1,'Estudante'),(2,'Estudante Trabalhador'),(3,'Estudante Atleta')], default=1)
+    ano = fields.Selection([(1,'1º ano'),(2,'2º ano'),(3,'3º ano'),(4,'4º ano'),(5,'5º ano'),(6,'6º ano')])
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'Plano Estudos ID')
     curso_id = fields.Many2one('planum.curso', 'Curso ID')
 
