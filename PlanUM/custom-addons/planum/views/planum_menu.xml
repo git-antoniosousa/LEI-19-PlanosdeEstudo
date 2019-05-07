@@ -14,6 +14,7 @@
 		name="Alunos"
 		parent="menu_planum"
 		action="action_aluno"
+		groups="planum_group_direcao_curso,planum_group_docente"/>
 	/>
 	<!-- Ação para consultar perfil do aluno -->
 	<act_window id="action_aluno_perfil"
@@ -39,18 +40,20 @@
 		name="Docentes"
 		parent="menu_planum"
 		action="action_docente"
+		groups="planum_group_direcao_curso,planum_group_admin"/>
 	/>
 	<!-- Ação para consultar o plano de estudos -->
 	<act_window id="action_plano_estudos"
-		name="Planos de Estudos"
+		name="Plano de Estudos"
 		res_model="planum.plano_estudos"
-		view_mode="tree,form"
+		view_mode="form,tree"
 	/>
 	<!-- Item do menu para consultar o plano de estudos -->
 	<menuitem id="menu_plano_estudos"
-		name="Planos de Estudos"
+		name="Plano de Estudos"
 		parent="menu_planum"
 		action="action_plano_estudos"
+		groups="planum_group_aluno"/>
 	/>
 	<!-- Ação para consultar os cursos -->
 	<act_window id="action_curso"
@@ -63,6 +66,7 @@
 		name="Cursos"
 		parent="menu_planum"
 		action="action_curso"
+		groups="planum_group_admin"/>
 	/>
 	<!-- Ação para consultar os planos de curso -->
 	<act_window id="action_plano_curso"
@@ -75,6 +79,7 @@
 		name="Planos de Curso"
 		parent="menu_planum"
 		action="action_plano_curso"
+		groups="planum_group_direcao_curso"/>
 	/>
 	<!-- Ação para consultar as UCs -->
 	<act_window id="action_uc"
@@ -87,6 +92,7 @@
 		name="Unidades Curriculares"
 		parent="menu_planum"
 		action="action_uc"
+		groups="planum_group_direcao_curso"/>
 	/>
 	<!-- Ação para consultar as Direções de Curso -->
 	<act_window id="action_direcao_curso"
@@ -99,5 +105,6 @@
 		name="Direções de Curso"
 		parent="menu_planum"
 		action="action_direcao_curso"
+		groups="planum_group_admin"/>
 	/>
 </odoo>

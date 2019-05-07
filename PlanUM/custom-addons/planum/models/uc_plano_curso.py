@@ -7,8 +7,8 @@ class UC_Plano_Curso (models.Model):
     active = fields.Boolean('Active?', default=True)
 
     codigo_plano=fields.Char('Código UC no Plano')
-    ano=fields.Integer('Ano')
-    semestre=fields.Selection([(1,'1º'),(2,'2º')])
+    ano=fields.Selection([(1,'1º ano'),(2,'2º ano'),(3,'3º ano'),(4,'4º ano'),(5,'5º ano'),(6,'6º ano')])
+    semestre=fields.Selection([(1,'1º semestre'),(2,'2º semestre')], default=1)
     fator=fields.Float('Fator',(2,1))
     plano_curso_id=fields.Many2one('planum.plano_curso', 'Plano de Curso ID')
     docentes = fields.Many2many('planum.docente', 'Docentes')

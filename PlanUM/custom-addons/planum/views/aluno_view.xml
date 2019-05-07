@@ -28,7 +28,7 @@
 							<field name="name" />
 							<field name="nr_mecanografico" />
 							<field name="media_acesso" />
-							<field name="estatuto" />
+							<field name="estatuto" widget="radio" />
 							<field name="active" groups="planum.planum_group_admin"/>
 						</group>
 						<group name="group_right">
