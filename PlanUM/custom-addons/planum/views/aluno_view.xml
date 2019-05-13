@@ -34,6 +34,7 @@
 						<group name="group_right">
 							<field name="curso_id"/>
 							<field name="ano"/>
+                            <!--field name="login"/-->
 						</group>
 					</group>
 				</sheet>

@@ -1,13 +1,12 @@
 from odoo import fields, models, api
 
 class Aluno(models.Model):
-    _inherit='res.partner'
+    _inherits ={'res.users' : 'user_id'}
     _name = 'planum.aluno'
     _description = 'Aluno'
     _order = 'name desc'
     active = fields.Boolean('Active?', default=True)
 
-    name=fields.Char('Nome')
     nr_mecanografico=fields.Char('Nº Mecanográfico')
     media_acesso=fields.Float('Média Acesso',(5,3))
     estatuto=fields.Selection([(1,'Estudante'),(2,'Estudante Trabalhador'),(3,'Estudante Atleta')], default=1)
@@ -38,14 +37,19 @@ class Aluno(models.Model):
 
         # Define plano de estudos
         vals['plano_estudos_id'] = plano_estudos.id
-
+        vals['login'] = vals['name']
+        # Arranjar maneira de dar password?
+        vals['password'] = "temp"
         new_record = super().create(vals)
+
 
         # Add security group to aluno
         security_group = self.env.ref('planum.planum_group_aluno')
-        security_group.write({
-            'users': [(4, new_record.id)]
-        })
+        print(new_record.id, new_record.user_id.id, security_group.id)
+        #Por isto a dar
+        #security_group.write({
+        #    'users': [(4,new_record.user_id.id)]
+        # })
 
         return new_record
 
