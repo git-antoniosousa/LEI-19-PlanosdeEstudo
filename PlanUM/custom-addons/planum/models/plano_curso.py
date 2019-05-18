@@ -4,6 +4,7 @@ class Plano_Curso(models.Model):
     _name = 'planum.plano_curso'
     _description = 'Plano de Curso'
     _order = 'data_inicio desc'
+    _rec_name = 'curso_id'
     active = fields.Boolean('Active?', default=True)
 
     data_inicio=fields.Date('Data Inicio')

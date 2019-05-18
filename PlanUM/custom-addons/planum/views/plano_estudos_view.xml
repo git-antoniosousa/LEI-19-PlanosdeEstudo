@@ -16,8 +16,14 @@
 						<field name="aluno"/>
 						<field name="ucs" string="Unidades Curriculares">
                             <tree>
+                            	<field name="designacao"/>
                                 <field name="nota" />
 						        <field name="ano_conclusao" />
+						        <field name="fator"/>
+								<field name="ano"/>
+								<field name="semestre"/>
+								<field name="ects"/>
+								<field name="obrigatoria"/>
                             </tree>
                         </field>
 						<field name="media_parcial" />
