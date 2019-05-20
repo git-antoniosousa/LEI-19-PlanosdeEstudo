@@ -20,7 +20,7 @@
 	<act_window id="action_aluno_perfil"
 		name="Perfil"
 		res_model="planum.aluno"
-		view_mode="form,tree"
+		view_mode="kanban,form,tree"
 	/>
 	<!-- Item do menu para consultar perfil do aluno -->
 	<menuitem id="menu_aluno_perfil"
@@ -46,7 +46,7 @@
 	<act_window id="action_plano_estudos"
 		name="Plano de Estudos"
 		res_model="planum.plano_estudos"
-		view_mode="form,tree"
+		view_mode="kanban,form,tree"
 	/>
 	<!-- Item do menu para consultar o plano de estudos -->
 	<menuitem id="menu_plano_estudos"
@@ -60,6 +60,7 @@
 		name="Cursos"
 		res_model="planum.curso"
 		view_mode="tree,form"
+		context="{'search_default_curso_active': True, 'search_default_curso_not_active': True}" />
 	/>
 	<!-- Item do menu para consultar os cursos -->
 	<menuitem id="menu_curso"

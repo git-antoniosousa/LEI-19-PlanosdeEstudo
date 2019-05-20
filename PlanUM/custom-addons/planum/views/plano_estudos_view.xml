@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
+	<!-- Form -->
 	<record id="view_form_plano_estudos" model="ir.ui.view">
 		<field name="name">Plano de Estudos Form</field>
 		<field name="model">planum.plano_estudos</field>
@@ -34,6 +35,8 @@
 			</form>
 		</field>
 	</record>
+
+	<!-- Tree -->
 	<record id="view_tree_plano_estudos" model="ir.ui.view">
 		<field name="name">Lista de Planos de Estudos</field>
 		<field name="model">planum.plano_estudos</field>
@@ -45,6 +48,8 @@
 			</tree>
 		</field>
 	</record>	
+
+	<!-- Search -->
 	<record id="view_search_plano_estudos" model="ir.ui.view">
 		<field name="name">Filtros do Plano de Estudo</field>
 		<field name="model">planum.plano_estudos</field>
@@ -57,4 +62,53 @@
             </search>
 		</field>
 	</record>
+
+	<!-- Kanban -->
+    <record model="ir.ui.view" id="view_kanban_plano_estudos">
+        <field name="name">Plano de Estudos</field>
+        <field name="model">planum.plano_estudos</field>
+        <field name="arch" type="xml">
+            <kanban>
+				<field name="ucs"/>
+				<field name="media_parcial" />
+				<field name="media_licenciatura" />
+                <templates>
+                    <t t-name="kanban-box">
+                        <div style="position: relative">
+                            <p type="open">
+                                Média Parcial: <field name="media_parcial"/>
+                            </p>
+                            <p type="open">
+                                Média Licenciatura: <field name="media_licenciatura"/>
+                            </p>
+				            <table class="oe_kanban_table">
+								<tr>
+									<th>Designação</th>
+									<th>Nota</th> 
+									<th>Ano de Conclusão</th>
+									<th>Fator</th>
+									<th>Ano</th>
+									<th>Semestre</th>
+									<th>Créditos ECTS</th>
+									<th>Obrigatória?</th>
+								</tr>
+								<t t-foreach="record.ucs.raw_value" t-as='uc'>
+									<tr>
+									    <td><t t-esc="uc.designacao"/></td>
+									    <td><t t-esc="uc.nota"/></td>
+									    <td><t t-esc="uc.ano_conclusao"/></td>
+									    <td><t t-esc="uc.fator"/></td>
+									    <td><t t-esc="uc.ano"/></td>
+									    <td><t t-esc="uc.semestre"/></td>
+									    <td><t t-esc="uc.ects"/></td>
+									    <td><t t-esc="uc.obrigatoria"/></td>
+									</tr>
+								</t>
+							</table>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
 </odoo>

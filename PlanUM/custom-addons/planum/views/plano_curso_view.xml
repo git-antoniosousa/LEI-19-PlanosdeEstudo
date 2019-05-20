@@ -35,4 +35,18 @@
 			</tree>
 		</field>
 	</record>
+	<!--<record id="view_search_plano_curso" model="ir.ui.view">
+		<field name="name">Filtros do Plano de Curso</field>
+		<field name="model">planum.plano_curso</field>
+		<field name="arch" type="xml">
+			<search>
+              <filter name="plano_curso_not_active"
+				  string="Not Active"
+				  domain="[('active', '=', False)]" />
+			  <filter name="plano_curso_active"
+				  string="Active"
+				  domain="[('active', '=', True)]" />
+            </search>
+		</field>
+	</record>-->
 </odoo>

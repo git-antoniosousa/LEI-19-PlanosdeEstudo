@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
+	<!-- Form -->
 	<record id="view_form_aluno" model="ir.ui.view">
 		<field name="name">Aluno Form</field>
 		<field name="model">planum.aluno</field>
@@ -41,6 +42,8 @@
 			</form>
 		</field>
 	</record>
+
+	<!-- Tree -->
 	<record id="view_tree_aluno" model="ir.ui.view">
 		<field name="name">Lista de Alunos</field>
 		<field name="model">planum.aluno</field>
@@ -52,7 +55,9 @@
 				<field name="ano"/>
 			</tree>
 		</field>
-	</record>	
+	</record>
+
+	<!-- Search -->	
 	<record id="view_search_aluno" model="ir.ui.view">
 		<field name="name">Filtros do Aluno</field>
 		<field name="model">planum.aluno</field>
@@ -69,4 +74,44 @@
             </search>
 		</field>
 	</record>
+
+	<!-- Kanban -->
+        <record model="ir.ui.view" id="view_kanban_aluno">
+            <field name="name">Perfil</field>
+            <field name="model">planum.aluno</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="name" />
+					<field name="nr_mecanografico" />
+					<field name="media_acesso" />
+					<field name="estatuto" widget="radio" />
+					<field name="curso_id"/>
+					<field name="ano"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div>
+                                <p type="open">
+                                    Nome: <field name="name"/>
+                                </p>
+                                <p type="open">
+                                    Número Mecanográfico: <field name="nr_mecanografico"/>
+                                </p>
+                                <p type="open">
+                                    Média Acesso: <field name="media_acesso"/>
+                                </p>
+                                <p type="open">
+                                    Estatuto: <field name="estatuto"/>
+                                </p>
+                                <p type="open">
+                                    Curso: <field name="curso_id"/>
+                                </p>
+                                <p type="open">
+                                    Ano: <field name="ano"/>
+                                </p>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
 </odoo>

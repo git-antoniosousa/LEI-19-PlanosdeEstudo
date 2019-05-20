@@ -53,6 +53,12 @@
                   filter_domain="[('codigo','ilike',self)]"/>
               <field name="designacao" string="Designação"
                   filter_domain="[('designacao','ilike',self)]"/>
+              <filter name="curso_not_active"
+				  string="Not Active"
+				  domain="[('active', '=', False)]" />
+			  <filter name="curso_active"
+				  string="Active"
+				  domain="[('active', '=', True)]" />
             </search>
 		</field>
 	</record>
