@@ -20,6 +20,23 @@ class UC_Plano_Curso (models.Model):
     obrigatoria = fields.Boolean('Obrigatória?', related='uc_id.obrigatoria')
     codigo_designacao = fields.Char(compute='_compute_codigo_designacao')
 
+    aprovados = fields.Integer(compute='_compute_aprovacoes')
+    reprovados = fields.Integer(compute='_compute_aprovacoes')
+
+    @api.depends('ucs_plano_estudos')
+    def _compute_aprovacoes(self):
+        for uc_plano_curso in self:
+            aprovados = 0
+            reprovados = 0
+            for uc in uc_plano_curso.ucs_plano_estudos:
+                if uc.ano_conclusao == '2018/2019':
+                    if uc.nota >= 10:
+                        aprovados += 1
+                    if uc.nota < 10:
+                        reprovados += 1
+            uc_plano_curso.aprovados = aprovados
+            uc_plano_curso.reprovados = reprovados
+
     @api.depends('codigo_plano', 'designacao')
     def _compute_codigo_designacao(self):
         for uc in self:
