@@ -25,7 +25,7 @@
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
-						<group name="group_left">
+						<group name="group_left" >
 							<field name="name" />
 							<field name="nr_mecanografico" />
 							<field name="media_acesso" />
@@ -74,44 +74,4 @@
             </search>
 		</field>
 	</record>
-
-	<!-- Kanban -->
-        <record model="ir.ui.view" id="view_kanban_aluno">
-            <field name="name">Perfil</field>
-            <field name="model">planum.aluno</field>
-            <field name="arch" type="xml">
-                <kanban>
-                    <field name="name" />
-					<field name="nr_mecanografico" />
-					<field name="media_acesso" />
-					<field name="estatuto" widget="radio" />
-					<field name="curso_id"/>
-					<field name="ano"/>
-                    <templates>
-                        <t t-name="kanban-box">
-                            <div>
-                                <p type="open">
-                                    Nome: <field name="name"/>
-                                </p>
-                                <p type="open">
-                                    Número Mecanográfico: <field name="nr_mecanografico"/>
-                                </p>
-                                <p type="open">
-                                    Média Acesso: <field name="media_acesso"/>
-                                </p>
-                                <p type="open">
-                                    Estatuto: <field name="estatuto"/>
-                                </p>
-                                <p type="open">
-                                    Curso: <field name="curso_id"/>
-                                </p>
-                                <p type="open">
-                                    Ano: <field name="ano"/>
-                                </p>
-                            </div>
-                        </t>
-                    </templates>
-                </kanban>
-            </field>
-        </record>
 </odoo>
