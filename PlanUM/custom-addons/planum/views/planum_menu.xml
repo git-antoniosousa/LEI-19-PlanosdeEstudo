@@ -106,7 +106,7 @@
 		name="Direções de Curso"
 		parent="menu_planum"
 		action="action_direcao_curso"
-		groups="planum_group_admin"/>
+		groups="planum_group_admin,planum_group_direcao_curso"/>
 	/>
     <!-- Ação para consultar as Direções de Curso -->
 	<act_window id="action_administrador"

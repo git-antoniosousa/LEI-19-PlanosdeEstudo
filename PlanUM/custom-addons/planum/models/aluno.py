@@ -17,6 +17,7 @@ class Aluno(models.Model):
     @api.model
     def create(self, vals):
         curso_id = vals['curso_id']
+        vals['ano']=1
         curso = self.env['planum.curso'].browse(curso_id)
         uc_plano_estudos = self.env['planum.uc_plano_estudos']
         plano_curso_id=curso.plano_atual()
@@ -31,12 +32,21 @@ class Aluno(models.Model):
         plano_estudos = self.env['planum.plano_estudos'].create({})
 
         for uc in plano_curso.ucs:
-            uc_plano_estudos.create({
-                'nota':0,
-                'ano_conclusao':0,
-                'plano_estudos_id':plano_estudos.id,
-                'uc_plano_curso_id':uc.id,
-            })
+            if uc.ano == 1:
+                uc_plano_estudos.create({
+                    'nota': 0,
+                    # ONDE GUARDAR O ANO LETIVO
+                    'ano_conclusao': '2018/2019',
+                    'plano_estudos_id': plano_estudos.id,
+                    'uc_plano_curso_id': uc.id
+                })
+            else:
+                uc_plano_estudos.create({
+                    'nota': 0,
+                    'ano_conclusao': '',
+                    'plano_estudos_id': plano_estudos.id,
+                    'uc_plano_curso_id': uc.id,
+                })
 
         # Define plano de estudos
         vals['plano_estudos_id'] = plano_estudos.id

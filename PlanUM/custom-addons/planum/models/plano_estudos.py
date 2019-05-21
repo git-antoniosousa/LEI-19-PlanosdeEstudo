@@ -25,11 +25,11 @@ class Plano_Estudos (models.Model):
 
             for uc in self.ucs:
                 if uc.nota != 0:
-                    total_p += uc.nota
-                    i_p+=1
+                    total_p += uc.nota*uc.fator
+                    i_p+=uc.fator
                 if uc.ano < 4:
-                    total_l += uc.nota
-                    i_l+=1
+                    total_l += uc.nota*uc.fator
+                    i_l+=uc.fator
 
             if total_p != 0:
                 p.media_parcial = total_p/float(i_p)

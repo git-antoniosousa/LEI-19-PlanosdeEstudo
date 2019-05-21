@@ -4,9 +4,9 @@ access_direcao_curso_uc_plano_estudos,Direcao Curso a UC Plano Estudos,model_pla
 access_direcao_curso_curso,Direcao Curso a Curso,model_planum_curso,planum_group_direcao_curso,1,0,0,0
 access_direcao_curso_plano_curso,Direcao Curso a Plano Curso,model_planum_plano_curso,planum_group_direcao_curso,1,1,1,0
 access_direcao_curso_aluno,Direcao Curso a Aluno,model_planum_aluno,planum_group_direcao_curso,1,1,1,0
-access_direcao_curso_docente,Direcao Curso a Docente,model_planum_docente,planum_group_direcao_curso,1,1,0,0
+access_direcao_curso_docente,Direcao Curso a Docente,model_planum_docente,planum_group_direcao_curso,1,1,1,0
 access_direcao_curso_direcao_curso,Direcao Curso a Direcao Curso,model_planum_direcao_curso,planum_group_direcao_curso,1,1,0,0
-access_direcao_curso_uc,Direcao Curso a UC,model_planum_uc,planum_group_direcao_curso,1,0,1,0
+access_direcao_curso_uc,Direcao Curso a UC,model_planum_uc,planum_group_direcao_curso,1,1,1,0
 access_direcao_curso_uc_plano_curso,Direcao Curso a UC Plano Curso,model_planum_uc_plano_curso,planum_group_direcao_curso,1,1,1,0
 access_direcao_curso_administrador,Direcao Curso a Administrador,model_planum_administrador,planum_group_direcao_curso,0,0,0,0
 access_aluno_plano_estudos,Aluno a Plano Estudos,model_planum_plano_estudos,planum_group_aluno,1,0,0,0
@@ -27,7 +27,7 @@ access_admin_aluno,Admin a Aluno,model_planum_aluno,planum_group_admin,0,0,0,0
 access_admin_docente,Admin a Docente,model_planum_docente,planum_group_admin,1,1,1,0
 access_admin_direcao_curso,Admin a Direcao Curso,model_planum_direcao_curso,planum_group_admin,0,0,1,0
 access_admin_uc,Admin a UC,model_planum_uc,planum_group_admin,0,0,0,0
-access_admin_uc_plano_curso,Admin a UC Plano Curso,model_planum_uc_plano_curso,planum_group_admin,0,0,0,0
+access_admin_uc_plano_curso,Admin a UC Plano Curso,model_planum_uc_plano_curso,planum_group_admin,1,0,0,0
 access_admin_administrador,Admin a Administrador,model_planum_administrador,planum_group_admin,1,1,1,0
 access_docente_plano_estudos,Docente a PlanoEstudos,model_planum_plano_estudos,planum_group_docente,1,0,0,0
 access_docente_uc_plano_estudos,Docente a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_docente,1,0,0,0
