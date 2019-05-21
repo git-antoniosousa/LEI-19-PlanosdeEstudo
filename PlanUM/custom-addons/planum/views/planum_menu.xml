@@ -108,4 +108,17 @@
 		action="action_direcao_curso"
 		groups="planum_group_admin"/>
 	/>
+    <!-- Ação para consultar as Direções de Curso -->
+	<act_window id="action_administrador"
+		name="Administrador"
+		res_model="planum.administrador"
+		view_mode="form"
+	/>
+    <!-- Item do menu para inscrever administrador-->
+	<menuitem id="menu_administrador"
+		name="Administrador"
+		parent="menu_planum"
+		action="action_administrador"
+		groups="planum_group_admin"/>
+	/>
 </odoo>

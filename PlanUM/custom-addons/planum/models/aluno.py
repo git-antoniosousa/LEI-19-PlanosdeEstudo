@@ -19,13 +19,16 @@ class Aluno(models.Model):
         curso_id = vals['curso_id']
         curso = self.env['planum.curso'].browse(curso_id)
         uc_plano_estudos = self.env['planum.uc_plano_estudos']
-        plano_curso=self.env['planum.plano_curso'].browse(curso.plano_atual())
+        plano_curso_id=curso.plano_atual()
+
+        #Corrigir erro do odoo neste caso, fazer rollback do create do aluno
+        if plano_curso_id == [None]:
+            print("Não há plano de curso para o curso selecionado")
+            return
+        plano_curso=self.env['planum.plano_curso'].browse(plano_curso_id)
 
         # Criar plano de estudos e UCs plano estudo
-        plano_estudos = self.env['planum.plano_estudos'].create({
-            'media_licenciatura': 0,
-            'media_parcial': 0
-        })
+        plano_estudos = self.env['planum.plano_estudos'].create({})
 
         for uc in plano_curso.ucs:
             uc_plano_estudos.create({
@@ -42,14 +45,10 @@ class Aluno(models.Model):
         vals['password'] = "temp"
         new_record = super().create(vals)
 
-
-        # Add security group to aluno
         security_group = self.env.ref('planum.planum_group_aluno')
-        print(new_record.id, new_record.user_id.id, security_group.id)
-        #Por isto a dar
-        #security_group.write({
-        #    'users': [(4,new_record.user_id.id)]
-        # })
+        security_group.write({
+            'users': [(4,new_record.user_id.id)]
+        })
 
         return new_record
 

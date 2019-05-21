@@ -16,10 +16,9 @@ class Curso(models.Model):
 
     @api.one
     def plano_atual(self):
-        planos_curso = self.env['planum.plano_curso'].search([])
         max_date = None
-
-        for plano in planos_curso:
+        plano_atual = None
+        for plano in self.planos_curso:
             if not max_date or plano.data_fim >= max_date:
                 max_date = plano.data_fim
                 plano_atual = plano.id

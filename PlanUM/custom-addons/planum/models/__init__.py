@@ -9,3 +9,4 @@ from . import plano_estudos
 from . import uc
 from . import uc_plano_curso
 from . import uc_plano_estudos
+from . import administrador
