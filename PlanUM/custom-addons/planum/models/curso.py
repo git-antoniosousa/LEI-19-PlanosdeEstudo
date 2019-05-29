@@ -23,7 +23,11 @@ class Curso(models.Model):
                 max_date = plano.data_fim
                 plano_atual = plano.id
 
-        return plano_atual
+        # Verificar se o plano ainda não expirou
+        if max_date < fields.Date.today():
+            return None
+        else:
+            return plano_atual
 
     @api.one
     def desativar(self):

@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 class Aluno(models.Model):
     _inherits ={'res.users' : 'user_id'}
@@ -22,10 +23,6 @@ class Aluno(models.Model):
         uc_plano_estudos = self.env['planum.uc_plano_estudos']
         plano_curso_id=curso.plano_atual()
 
-        #Corrigir erro do odoo neste caso, fazer rollback do create do aluno
-        if plano_curso_id == [None]:
-            print("Não há plano de curso para o curso selecionado")
-            return
         plano_curso=self.env['planum.plano_curso'].browse(plano_curso_id)
 
         # Criar plano de estudos e UCs plano estudo
@@ -61,6 +58,21 @@ class Aluno(models.Model):
         })
 
         return new_record
+
+    @api.constrains('curso_id')
+    def plano_curso_check(self):
+        if not self.curso_id.id:
+            raise ValidationError(
+                'O aluno deve ter um curso a si associado.')
+
+        curso = self.env['planum.curso'].browse(self.curso_id.id)
+        plano_curso_id = curso.plano_atual()
+
+        # Lançar erro se não existir um plano de curso ativo
+        if plano_curso_id == [None]:
+            raise ValidationError(
+                'O curso selecionado não possui um plano de curso ativo. Selecione outro curso ou tente '
+                'novamente mais tarde.')
 
     @api.one
     def desativar(self):

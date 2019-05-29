@@ -33,7 +33,7 @@
 							<field name="active" groups="planum.planum_group_admin"/>
 						</group>
 						<group name="group_right">
-							<field name="curso_id"/>
+							<field name="curso_id" string="Curso"/>
                             <!--field name="login"/-->
 						</group>
 					</group>
