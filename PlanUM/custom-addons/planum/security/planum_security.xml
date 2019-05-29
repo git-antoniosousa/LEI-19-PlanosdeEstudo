@@ -25,16 +25,17 @@
 				<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
 		</record>
 
-		<!-- PlanUM Administrador Group -->
+		<!-- PlanUM Administrador Group (4, ref('base.group_erp_manager')), -->
 		<record id="planum_group_admin" model="res.groups">
 				<field name="name">Administrador</field>
 				<field name="category_id" ref="module_planum_category"/>
-				<field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+				<field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_system'))]"/>
 				<field name="users" eval="[(4, ref('base.user_root')), (4, ref('base.user_admin'))]"/>
 		</record>
 
         <data noupdate="0">
             <!-- Record Rules de Direcao de Curso -->
+            <!--
            <record model="ir.rule" id="dc_alunos_curso_rule">
                <field name="name">Um diretor de curso vê apenas os alunos do seu curso</field>
                <field name="model_id" ref="model_planum_aluno"/>
@@ -43,7 +44,9 @@
                    [('curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
+         -->
             <!-- Testar quando o plano de estudos estiver a dar -->
+            <!--
              <record model="ir.rule" id="dc_planos_estudo_rule">
                <field name="name">Um diretor de curso vê apenas os planos de estudo dos alunos do seu curso</field>
                <field name="model_id" ref="model_planum_plano_estudos"/>
@@ -84,8 +87,10 @@
                    [('docentes.user_id', '=', user.id)]
                </field>
            </record>
+         -->
 
             <!-- Record Rules de Docentes -->
+            <!--
             <record model="ir.rule" id="docente_alunos_curso_rule">
                <field name="name">Um docente vê apenas os alunos do seu curso</field>
                <field name="model_id" ref="model_planum_aluno"/>
@@ -94,8 +99,9 @@
                    [('curso_id.planos_curso.ucs.docentes.user_id', '=', user.id)]
                </field>
            </record>
-
+          -->
             <!-- Record Rules de Alunos -->
+            <!--
             <record model="ir.rule" id="aluno_plano_estudos_rule">
                <field name="name">Um aluno vê apenas os planos de estudo</field>
                <field name="model_id" ref="model_planum_plano_estudos"/>
@@ -112,7 +118,7 @@
                     [('user_id', '=', user.id)]
                 </field>
             </record>
-
+      -->
        </data>
 
 

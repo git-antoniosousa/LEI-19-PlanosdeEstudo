@@ -45,14 +45,14 @@
 	<act_window id="action_plano_estudos"
 		name="Plano de Estudos"
 		res_model="planum.plano_estudos"
-		view_mode="form,tree"
+		view_mode="tree,form"
 	/>
 	<!-- Item do menu para consultar o plano de estudos -->
 	<menuitem id="menu_plano_estudos"
 		name="Plano de Estudos"
 		parent="menu_planum"
 		action="action_plano_estudos"
-		groups="planum_group_aluno"/>
+		groups="planum_group_aluno,planum_group_direcao_curso"/>
 	/>
 	<!-- Ação para consultar os cursos -->
 	<act_window id="action_curso"
@@ -72,7 +72,7 @@
 	<act_window id="action_plano_curso"
 		name="Planos de Curso"
 		res_model="planum.plano_curso"
-		view_mode="form,tree"
+		view_mode="tree,form"
 	/>
 	<!-- Item do menu para consultar os planos de curso -->
 	<menuitem id="menu_plano_curso"

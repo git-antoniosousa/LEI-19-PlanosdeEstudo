@@ -10,7 +10,7 @@ class Direcao_Curso(models.Model):
     docentes = fields.Many2many('planum.docente', string='Docentes')
     curso_id = fields.Many2one('planum.curso', 'Curso ID')
 
-    @api.onchange('docentes')
+    #@api.onchange('docentes')
     def adicionar_docente(self):
         security_group = self.env.ref('planum.planum_group_direcao_curso')
         for docente in self.docentes:
