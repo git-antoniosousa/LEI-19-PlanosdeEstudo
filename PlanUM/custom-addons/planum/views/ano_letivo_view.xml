@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<odoo>
+	<record id="view_form_ano_letivo" model="ir.ui.view">
+		<field name="name">Ano Letivo Form</field>
+		<field name="model">planum.ano_letivo</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+                    <button name="mudanca_ano"
+                        type="object"
+                        string="Mudança de Ano Letivo"
+                        groups="planum.planum_group_admin"
+                        class="oe_highlight" />
+				</header>
+				<sheet>
+					<group name="group_top">
+						<field name="ano"/>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+	<record id="view_tree_ano_letivo" model="ir.ui.view">
+		<field name="name">Lista de Ano Letivo</field>
+		<field name="model">planum.ano_letivo</field>
+		<field name="arch" type="xml">
+			<tree>
+				<field name="ano"/>
+                <field name="active" />
+			</tree>
+		</field>
+	</record>
+</odoo>

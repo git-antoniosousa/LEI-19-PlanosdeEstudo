@@ -23,6 +23,8 @@ class UC_Plano_Curso (models.Model):
     aprovados = fields.Integer(compute='_compute_aprovacoes')
     reprovados = fields.Integer(compute='_compute_aprovacoes')
 
+    estatisticas = fields.One2many('planum.estatistica', 'uc_plano_curso_id', 'Estatisticas da UC')
+
     @api.depends('ucs_plano_estudos')
     def _compute_aprovacoes(self):
         for uc_plano_curso in self:

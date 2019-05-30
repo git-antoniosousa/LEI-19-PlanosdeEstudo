@@ -120,4 +120,19 @@
 		action="action_administrador"
 		groups="planum_group_admin"/>
 	/>
+
+    <!-- Ação para consultar o Ano Letivo -->
+	<act_window id="action_ano_letivo"
+		name="Ano Letivo"
+		res_model="planum.ano_letivo"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar o Ano Letivo -->
+	<menuitem id="menu_ano_letivo"
+		name="Ano Letivo"
+		parent="menu_planum"
+		action="action_ano_letivo"
+		groups="planum_group_direcao_curso"/>
+	/>
+
 </odoo>

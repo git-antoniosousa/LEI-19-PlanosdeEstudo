@@ -35,6 +35,7 @@
         'views/uc_plano_estudos_view.xml',
         'views/uc_plano_curso_view.xml',
         'views/administrador_view.xml',
+        'views/ano_letivo_view.xml',
     ],
 
     # the module should be featured as an app in the apps list
