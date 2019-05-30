@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+import sys
 
 class Direcao_Curso(models.Model):
     _name = 'planum.direcao_curso'
@@ -10,10 +11,33 @@ class Direcao_Curso(models.Model):
     docentes = fields.Many2many('planum.docente', string='Docentes')
     curso_id = fields.Many2one('planum.curso', 'Curso ID')
 
-    #@api.onchange('docentes')
-    def adicionar_docente(self):
+    @api.model
+    def create(self, vals):
+        new_record = super().create(vals)
         security_group = self.env.ref('planum.planum_group_direcao_curso')
-        for docente in self.docentes:
+        for docente_id in vals['docentes'][0][2]:
+            docente = self.env['planum.docente'].browse(docente_id)
             security_group.write({
                 'users': [(4, docente.user_id.id)]
             })
+        return new_record
+
+    @api.multi
+    def write(self, vals):
+        security_group = self.env.ref('planum.planum_group_direcao_curso')
+        #Remove docentes antigos
+        for docente_old in self.docentes:
+            sys.stdout.write(str(len(docente_old.direcoes_curso)))
+            if len(docente_old.direcoes_curso) <= 1:
+                security_group.write({
+                    'users': [(3, docente_old.user_id.id)]
+                })
+        #Adiciona novos docentes
+        if 'docentes' in vals:
+            for docente_id in vals['docentes'][0][2]:
+                docente = self.env['planum.docente'].browse(docente_id)
+                security_group.write({
+                    'users': [(4, docente.user_id.id)]
+                })
+        return super().write(vals)
+
