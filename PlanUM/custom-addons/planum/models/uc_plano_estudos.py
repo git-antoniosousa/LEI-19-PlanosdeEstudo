@@ -3,7 +3,7 @@ from odoo import fields, models
 class UC_Plano_Estudos (models.Model):
     _name = 'planum.uc_plano_estudos'
     _description = 'Unidade Curricular'
-    _order = 'ano_conclusao asc'
+    _order = 'ano,semestre asc'
     active = fields.Boolean('Active?', default=True)
 
     nota = fields.Integer('Nota')

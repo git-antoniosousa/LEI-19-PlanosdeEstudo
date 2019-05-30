@@ -9,7 +9,7 @@ class UC (models.Model):
 
     codigo = fields.Char('Código UC')
     designacao = fields.Char('Designação')
-    ects=fields.Integer('Créditos ECTS')
+    ects=fields.Integer('Créditos ECTS', default=5)
     obrigatoria=fields.Boolean('Obrigatória?')
     ucs_plano_curso = fields.One2many('planum.uc_plano_curso', 'uc_id', 'UCs de Planos de Curso')
     codigo_designacao = fields.Char(compute='_compute_codigo_designacao')

@@ -8,8 +8,8 @@ class Plano_Estudos (models.Model):
     active = fields.Boolean('Active?', default=True)
 
     #media_parcial=fields.Float('Média Parcial',(5,3))
-    ucs=fields.One2many('planum.uc_plano_estudos', 'plano_estudos_id', 'Unidades Curriculares')
-    aluno=fields.One2many('planum.aluno', 'plano_estudos_id', 'Aluno')
+    ucs = fields.One2many('planum.uc_plano_estudos', 'plano_estudos_id', 'Unidades Curriculares')
+    aluno = fields.One2many('planum.aluno', 'plano_estudos_id', 'Aluno')
     aluno_nr = fields.Char('Nº Aluno', related='aluno.nr_mecanografico')
 
     media_parcial=fields.Float(compute='_compute_medias')

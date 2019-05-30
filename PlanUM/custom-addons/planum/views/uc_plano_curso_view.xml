@@ -7,16 +7,15 @@
 			<form>
 				<header>
 					<!-- Buttons will go here -->
-					<!--<button name="button_check_isbn" type="object"
-						string="Check ISBN" /> -->
+					<!--<button name="button_check_isbn" type="object" string="Check ISBN" /> -->
 				</header>
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
-                        <field name="uc_id" />
+						<field name="uc_id" />
 						<field name="codigo_plano" />
 						<field name="ano" />
-						<field name="semestre"  widget="radio" />
+						<field name="semestre" widget="radio" />
 						<field name="fator" />
 						<field name="active" />
 					</group>
@@ -28,9 +27,9 @@
 		<field name="name">Lista de UCs do Plano de Curso</field>
 		<field name="model">planum.uc_plano_curso</field>
 		<field name="arch" type="xml">
-			<tree>
-                <field name="uc_id" />
-                <field name="designacao"/>
+			<tree delete="true">
+				<field name="uc_id" />
+				<field name="designacao"/>
 				<field name="codigo_plano" />
 				<field name="ano" />
 				<field name="semestre" />
@@ -39,15 +38,14 @@
 				<field name="obrigatoria" />
 			</tree>
 		</field>
-	</record>	
+	</record>
 	<record id="view_search_uc_plano_curso" model="ir.ui.view">
 		<field name="name">Filtros da UC do Plano de Curso</field>
 		<field name="model">planum.uc_plano_curso</field>
 		<field name="arch" type="xml">
 			<search>
-              <field name="codigo_plano" string="Código"
-                  filter_domain="[('codigo_plano','ilike',self)]"/>
-            </search>
+				<field name="codigo_plano" string="Código" filter_domain="[('codigo_plano','ilike',self)]"/>
+			</search>
 		</field>
 	</record>
 </odoo>
