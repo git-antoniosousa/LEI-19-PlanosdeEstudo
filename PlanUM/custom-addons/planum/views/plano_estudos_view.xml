@@ -44,7 +44,6 @@
 			<tree>
 				<!-- Como aceder só ao nome e ao nº do aluno? -->
 				<field name="aluno" />
-				<field name="media_parcial" />
 			</tree>
 		</field>
 	</record>	

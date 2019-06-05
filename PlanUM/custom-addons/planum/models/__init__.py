@@ -12,3 +12,4 @@ from . import uc_plano_estudos
 from . import administrador
 from . import estatistica
 from . import ano_letivo
+from . import previsao

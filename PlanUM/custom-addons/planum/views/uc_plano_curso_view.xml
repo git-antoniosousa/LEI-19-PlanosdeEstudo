@@ -18,6 +18,15 @@
 						<field name="semestre" widget="radio" />
 						<field name="fator" />
 						<field name="active" />
+                        <field name="aprovados" />
+                        <field name="reprovados"/>
+                        <field name="estatisticas">
+                            <tree>
+                                <field name="ano"/>
+                                <field name="aprovados"/>
+                                <field name="reprovados"/>
+                            </tree>
+                        </field>
 					</group>
 				</sheet>
 			</form>

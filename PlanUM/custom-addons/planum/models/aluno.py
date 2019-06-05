@@ -22,6 +22,7 @@ class Aluno(models.Model):
         curso = self.env['planum.curso'].browse(curso_id)
         uc_plano_estudos = self.env['planum.uc_plano_estudos']
         plano_curso_id=curso.plano_atual()
+        ano_atual = self.env['planum.ano_letivo'].search([]).ano
 
         plano_curso=self.env['planum.plano_curso'].browse(plano_curso_id)
 
@@ -33,7 +34,7 @@ class Aluno(models.Model):
                 uc_plano_estudos.create({
                     'nota': 0,
                     # ONDE GUARDAR O ANO LETIVO
-                    'ano_conclusao': '2018/2019',
+                    'ano_conclusao': ano_atual,
                     'plano_estudos_id': plano_estudos.id,
                     'uc_plano_curso_id': uc.id
                 })

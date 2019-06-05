@@ -42,3 +42,4 @@ access_docente_administrador,Docente a Administrador,model_planum_administrador,
 
 access_direcao_curso_estatistica,Direcao Curso a Estatistica,model_planum_estatistica,planum_group_direcao_curso,1,1,1,1
 access_direcao_curso_ano_letivo,Direcao Curso a Ano Letivo,model_planum_ano_letivo,planum_group_direcao_curso,1,1,1,1
+access_direcao_curso_previsao,Direcao Curso a Previsao,model_planum_previsao,planum_group_direcao_curso,1,1,1,1

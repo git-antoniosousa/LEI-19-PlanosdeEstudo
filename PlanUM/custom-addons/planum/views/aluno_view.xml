@@ -34,6 +34,7 @@
 						</group>
 						<group name="group_right">
 							<field name="curso_id" string="Curso"/>
+                            <field name="ano" string="Ano" readonly="1"/>
                             <!--field name="login"/-->
 						</group>
 					</group>
