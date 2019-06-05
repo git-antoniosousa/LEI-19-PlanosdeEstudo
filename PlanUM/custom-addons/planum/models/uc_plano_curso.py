@@ -24,6 +24,7 @@ class UC_Plano_Curso (models.Model):
     reprovados = fields.Integer(compute='_compute_aprovacoes')
 
     estatisticas = fields.One2many('planum.estatistica', 'uc_plano_curso_id', 'Estatisticas da UC')
+    previsoes = fields.One2many('planum.previsao', 'uc_plano_curso_id', 'Previsões')
 
     @api.depends('ucs_plano_estudos')
     def _compute_aprovacoes(self):
@@ -43,3 +44,11 @@ class UC_Plano_Curso (models.Model):
     def _compute_codigo_designacao(self):
         for uc in self:
             uc.codigo_designacao = uc.codigo_plano + ' - ' + uc.designacao
+
+    #TODO REFAZER ISTO
+    def previsao_atual(self):
+        prev=None
+        for previsao in self.previsoes:
+            if prev is None or int(prev.ano[0:4]) < int(previsao.ano[0:4]):
+                prev=previsao
+        return prev

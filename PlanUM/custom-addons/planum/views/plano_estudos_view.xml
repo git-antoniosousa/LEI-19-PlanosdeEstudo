@@ -43,7 +43,7 @@
 		<field name="arch" type="xml">
 			<tree>
 				<!-- Como aceder só ao nome e ao nº do aluno? -->
-				<field name="aluno" />
+				<field name="aluno_nr" />
 			</tree>
 		</field>
 	</record>	

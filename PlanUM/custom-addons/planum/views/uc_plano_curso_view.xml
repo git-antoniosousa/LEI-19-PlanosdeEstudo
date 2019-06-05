@@ -27,6 +27,13 @@
                                 <field name="reprovados"/>
                             </tree>
                         </field>
+                        <field name="previsoes">
+                            <tree>
+                                <field name="ano"/>
+                                <field name="garantidas"/>
+                                <field name="possiveis"/>
+                            </tree>
+                        </field>
 					</group>
 				</sheet>
 			</form>
