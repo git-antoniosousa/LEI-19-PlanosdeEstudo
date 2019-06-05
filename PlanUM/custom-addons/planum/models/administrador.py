@@ -6,10 +6,11 @@ class Administrador(models.Model):
     _description = 'Administrador'
     _order = 'name desc'
     active = fields.Boolean('Active?', default=True)
+    nr_mecanografico = fields.Char('Nº Mecanográfico')
 
     @api.model
     def create(self, vals):
-        vals['login'] = vals['name']
+        vals['login'] = vals['nr_mecanografico']
         # Arranjar maneira de dar password?
         vals['password'] = "temp"
         new_record = super().create(vals)

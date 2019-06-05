@@ -48,7 +48,7 @@ class Aluno(models.Model):
 
         # Define plano de estudos
         vals['plano_estudos_id'] = plano_estudos.id
-        vals['login'] = vals['name']
+        vals['login'] = vals['nr_mecanografico']
         # Arranjar maneira de dar password?
         vals['password'] = "temp"
         new_record = super().create(vals)

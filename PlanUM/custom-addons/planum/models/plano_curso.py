@@ -1,4 +1,5 @@
-from odoo import fields, models
+from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 class Plano_Curso(models.Model):
     _name = 'planum.plano_curso'
@@ -11,3 +12,38 @@ class Plano_Curso(models.Model):
     data_fim = fields.Date('Data Fim')
     curso_id = fields.Many2one('planum.curso', 'Curso ID')
     ucs = fields.One2many('planum.uc_plano_curso', 'plano_curso_id', 'Unidades Curriculares')
+
+
+    @api.constrains('data_inicio','data_fim', 'ucs', 'curso_id')
+    def plano_curso_check(self):
+        # Verificar se foram definidas datas de início e fim
+        if not self.data_inicio or not self.data_fim:
+            raise ValidationError(
+                'O plano de curso deve ter datas de início e fim devidamente definidas.')
+
+        elif not self.ucs:
+            raise ValidationError(
+                'O plano de curso deve conter pelo menos uma UC.')
+
+        elif not self.curso_id:
+            raise ValidationError(
+                'O plano de curso deve ter um curso associado.')
+
+        # Verificar se as datam são posteriores ou iguais à data atual
+        elif self.data_inicio < fields.Date.today() or self.data_fim < fields.Date.today():
+            raise ValidationError(
+                'As datas de início e fim de um plano de curso não podem ser anteriores à data atual.')
+
+        # Verificar se a data de início é anterior à de fim
+        elif self.data_inicio >= self.data_fim:
+            raise ValidationError(
+                'A data de fim deve ser posterior à data de início.')
+
+        # Verificar se não existem planos de curso com datas coincidentes
+        planos_curso = self.env['planum.plano_curso'].search([('data_inicio', '>=', str(fields.Date.today())), ('id', '!=', self.id)])
+
+        for plano in planos_curso:
+            if self.data_inicio <= plano.data_fim:
+                raise ValidationError(
+                    'Já existe um plano de curso definido de ' + str(plano.data_inicio) + ' a ' + str(plano.data_fim) +
+                    '. Não pode existir mais do que um plano de curso na mesma data.')

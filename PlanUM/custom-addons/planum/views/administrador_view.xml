@@ -26,6 +26,7 @@
 					<!-- Content goes here: -->
 					<group name="group_top">
 						<field name="name" />
+                        <field name="nr_mecanografico" />
                         <field name="active" groups="planum.planum_group_admin"/>
 					</group>
 				</sheet>
