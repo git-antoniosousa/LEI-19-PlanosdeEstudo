@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+import sys
 
 class UC_Plano_Curso (models.Model):
     _name = 'planum.uc_plano_curso'
@@ -32,7 +33,7 @@ class UC_Plano_Curso (models.Model):
             aprovados = 0
             reprovados = 0
             for uc in uc_plano_curso.ucs_plano_estudos:
-                if uc.ano_conclusao == '2018/2019':
+                if uc.ano_conclusao == '2018/2019' and uc.plano_estudos_id.aluno_nr is not False:
                     if uc.nota >= 10:
                         aprovados += 1
                     if uc.nota < 10:
