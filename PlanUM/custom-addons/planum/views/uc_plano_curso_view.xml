@@ -30,8 +30,9 @@
                         <field name="previsoes">
                             <tree>
                                 <field name="ano"/>
-                                <field name="garantidas"/>
-                                <field name="possiveis"/>
+                                <field name="min"/>
+                                <field name="med"/>
+                                <field name="max"/>
                             </tree>
                         </field>
 					</group>

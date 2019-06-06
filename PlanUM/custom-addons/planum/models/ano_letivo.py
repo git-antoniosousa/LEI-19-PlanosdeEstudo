@@ -39,7 +39,7 @@ class Ano_Letivo(models.Model):
         #Isto não vai buscar desativados?
         alunos = self.env['planum.aluno'].search([])
         #TODO Mudar para 60
-        fator = 60
+        fator = 30
         for aluno in alunos:
             creditos_totais=0
             creditos_feitos=0
@@ -52,46 +52,55 @@ class Ano_Letivo(models.Model):
                         uc.nota=0
 
             if creditos_feitos>=(creditos_totais-fator):
-                sys.stdout.write("Passou de ano!\n\n" + str(creditos_feitos) + "/" + str(creditos_totais) + "\n\n")
+                sys.stdout.write("Passou de ano!\n" + str(creditos_feitos) + "/" + str(creditos_totais) + "\n\n")
                 aluno.ano+=1
 
     def previsao(self):
         alunos = self.env['planum.aluno'].search([])
         cursos = self.env['planum.curso'].search([])
         previsao = self.env['planum.previsao']
+        prev={}
 
         for curso in cursos:
             plano_atual_id = curso.plano_atual()[0]
             plano_atual = self.env['planum.plano_curso'].browse(plano_atual_id)
             # TODO: Verificar se há plano
             for uc in plano_atual.ucs:
-                previsao.create({
+                prev[uc.designacao] =previsao.create({
                     'ano': self.proximo_ano(),
-                    'possiveis': 0,
-                    'garantidas': 0,
+                    'min': 0,
+                    'med': 0,
+                    'max': 0,
                     'uc_plano_curso_id': uc.id
                 })
 
 
         for aluno in alunos:
-            for uc in aluno.plano_estudos_id.ucs:
-                creditos_atrasados=0
-                previsao_atual = uc.uc_plano_curso_id.previsao_atual()
+            sys.stdout.write("Aluno " + str(aluno.nr_mecanografico) + "\n")
+            creditos_atrasados = 0
+            cadeiras_atrasadas = 0
+            #Percorrer UCs por ordem
+            for uc in sorted(aluno.plano_estudos_id.ucs, key=lambda uc: uc.ano):
+                previsao_atual = prev[uc.designacao]
                 #Cadeira atrasada
                 if uc.ano < aluno.ano and uc.nota < 10 and uc.ano_conclusao == self.ano:
-                    previsao_atual.possiveis+=1
-                    previsao_atual.garantidas += 1
-                    sys.stdout.write("Cadeira atrasada\n" + str(previsao_atual.possiveis) + "/" + str(previsao_atual.garantidas) + ":" + str(previsao) + "\n\n")
+                    previsao_atual.min+=1
+                    previsao_atual.med+= 1
+                    previsao_atual.max+= 1
+                    sys.stdout.write("Cadeira atrasada " + uc.designacao + " \n" + str(previsao_atual.min) + "/" + str(previsao_atual.max) + ":" + str(previsao) + "\n\n")
                     creditos_atrasados+=uc.ects
-                    #uc.ano_conclusao=self.proximo_ano()
+                    cadeiras_atrasadas+=1
+                    uc.ano_conclusao=self.proximo_ano()
                 #Cadeiras do ano
                 elif uc.ano == aluno.ano and uc.nota < 10:
                     if creditos_atrasados <= 15:
-                        previsao_atual.possiveis += 1
-                        previsao_atual.garantidas += 1
+                        previsao_atual.min+= 1
+                        previsao_atual.med+= 1
+                        previsao_atual.max+= 1
                     else:
-                        previsao_atual.possiveis += 1
-                    sys.stdout.write("Cadeira do ano\n" + str(previsao_atual.possiveis) + "/" + str(previsao_atual.garantidas) + ":" + str(previsao) + "\n\n")
-                    #uc.ano_conclusao = self.proximo_ano()
+                        previsao_atual.max+= 1
+                        previsao_atual.med+= cadeiras_atrasadas/12
+                    sys.stdout.write("Cadeira do ano " + uc.designacao + " \n" +str(previsao_atual.min) + "/" + str(previsao_atual.max) + ":" + str(previsao) + "\n\n")
+                    uc.ano_conclusao = self.proximo_ano()
 
         return

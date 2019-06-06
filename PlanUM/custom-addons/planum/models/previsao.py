@@ -6,7 +6,7 @@ class Previsao (models.Model):
     active = fields.Boolean('Active?', default=True)
 
     ano = fields.Char('Ano')
-    #TODO Mudar para maximo e para minimo
-    possiveis = fields.Integer('Inscrições Possíveis')
-    garantidas = fields.Integer('Inscrições Garantidas')
+    min = fields.Integer('Inscrições Mínimas')
+    med = fields.Float('Inscrições Médias',(5,2))
+    max = fields.Integer('Inscrições Máximas')
     uc_plano_curso_id = fields.Many2one('planum.uc_plano_curso', 'ID UC Plano Curso')
