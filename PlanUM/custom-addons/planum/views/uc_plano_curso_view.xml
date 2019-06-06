@@ -31,6 +31,7 @@
                             <tree>
                                 <field name="ano"/>
                                 <field name="min"/>
+                                <field name="med"/>
                                 <field name="max"/>
                             </tree>
                         </field>

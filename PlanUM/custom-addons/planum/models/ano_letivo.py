@@ -69,6 +69,7 @@ class Ano_Letivo(models.Model):
                 prev[uc.designacao] =previsao.create({
                     'ano': self.proximo_ano(),
                     'min': 0,
+                    'med': 0,
                     'max': 0,
                     'uc_plano_curso_id': uc.id
                 })
@@ -77,23 +78,28 @@ class Ano_Letivo(models.Model):
         for aluno in alunos:
             sys.stdout.write("Aluno " + str(aluno.nr_mecanografico) + "\n")
             creditos_atrasados = 0
+            cadeiras_atrasadas = 0
             #Percorrer UCs por ordem
             for uc in sorted(aluno.plano_estudos_id.ucs, key=lambda uc: uc.ano):
                 previsao_atual = prev[uc.designacao]
                 #Cadeira atrasada
                 if uc.ano < aluno.ano and uc.nota < 10 and uc.ano_conclusao == self.ano:
                     previsao_atual.min+=1
+                    previsao_atual.med+= 1
                     previsao_atual.max+= 1
                     sys.stdout.write("Cadeira atrasada " + uc.designacao + " \n" + str(previsao_atual.min) + "/" + str(previsao_atual.max) + ":" + str(previsao) + "\n\n")
                     creditos_atrasados+=uc.ects
+                    cadeiras_atrasadas+=1
                     uc.ano_conclusao=self.proximo_ano()
                 #Cadeiras do ano
                 elif uc.ano == aluno.ano and uc.nota < 10:
                     if creditos_atrasados <= 15:
                         previsao_atual.min+= 1
+                        previsao_atual.med+= 1
                         previsao_atual.max+= 1
                     else:
                         previsao_atual.max+= 1
+                        previsao_atual.med+= cadeiras_atrasadas/12
                     sys.stdout.write("Cadeira do ano " + uc.designacao + " \n" +str(previsao_atual.min) + "/" + str(previsao_atual.max) + ":" + str(previsao) + "\n\n")
                     uc.ano_conclusao = self.proximo_ano()
 
