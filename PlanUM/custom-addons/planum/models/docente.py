@@ -13,7 +13,7 @@ class Docente(models.Model):
 
     @api.model
     def create(self, vals):
-        vals['login'] = vals['name']
+        vals['login'] = vals['nr_mecanografico']
         # Arranjar maneira de dar password?
         vals['password'] = "temp"
         new_record = super().create(vals)

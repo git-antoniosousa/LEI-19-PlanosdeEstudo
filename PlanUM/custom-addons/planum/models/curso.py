@@ -18,12 +18,17 @@ class Curso(models.Model):
     def plano_atual(self):
         max_date = None
         plano_atual = None
+
+        # Verificar se existe algum plano de curso
+        if not self.planos_curso:
+            return None
+
+        # Verificar se o plano ainda não expirou
         for plano in self.planos_curso:
             if not max_date or plano.data_fim >= max_date:
                 max_date = plano.data_fim
                 plano_atual = plano.id
 
-        # Verificar se o plano ainda não expirou
         if max_date < fields.Date.today():
             return None
         else:

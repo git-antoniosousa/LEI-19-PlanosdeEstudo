@@ -14,12 +14,13 @@
 		name="Alunos"
 		parent="menu_planum"
 		action="action_aluno"
+        groups="planum_group_docente,planum_group_direcao_curso"/>
 	/>
 	<!-- Ação para consultar perfil do aluno -->
 	<act_window id="action_aluno_perfil"
 		name="Perfil"
 		res_model="planum.aluno"
-		view_mode="form,tree"
+		view_mode="tree,form"
 	/>
 	<!-- Item do menu para consultar perfil do aluno -->
 	<menuitem id="menu_aluno_perfil"
