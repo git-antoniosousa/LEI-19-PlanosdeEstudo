@@ -1,4 +1,4 @@
-from odoo import fields, models, api
+from odoo import fields, models
 import sys
 
 class Ano_Letivo(models.Model):
@@ -13,11 +13,10 @@ class Ano_Letivo(models.Model):
         ano_int+=1
         return str(ano_int) + "/" + str(ano_int+1)
 
-
     def mudanca_ano(self):
         self.guarda_historico()
-        self.alterar_planos_estudo()
-        self.previsao()
+        reprovados=self.alterar_planos_estudo()
+        self.previsao(reprovados)
         self.ano=self.proximo_ano()
 
     def guarda_historico(self):
@@ -40,6 +39,7 @@ class Ano_Letivo(models.Model):
         alunos = self.env['planum.aluno'].search([])
         #TODO Mudar para 60
         fator = 30
+        reprovados = []
         for aluno in alunos:
             creditos_totais=0
             creditos_feitos=0
@@ -54,8 +54,12 @@ class Ano_Letivo(models.Model):
             if creditos_feitos>=(creditos_totais-fator):
                 sys.stdout.write("Passou de ano!\n" + str(creditos_feitos) + "/" + str(creditos_totais) + "\n\n")
                 aluno.ano+=1
+            else:
+                reprovados.append(aluno.nr_mecanografico)
+        return reprovados
 
-    def previsao(self):
+
+    def previsao(self, reprovados):
         alunos = self.env['planum.aluno'].search([])
         cursos = self.env['planum.curso'].search([])
         previsao = self.env['planum.previsao']
@@ -79,6 +83,7 @@ class Ano_Letivo(models.Model):
             sys.stdout.write("Aluno " + str(aluno.nr_mecanografico) + "\n")
             creditos_atrasados = 0
             cadeiras_atrasadas = 0
+            creditos=60
             #Percorrer UCs por ordem
             for uc in sorted(aluno.plano_estudos_id.ucs, key=lambda uc: uc.ano):
                 previsao_atual = prev[uc.designacao]
@@ -90,6 +95,7 @@ class Ano_Letivo(models.Model):
                     sys.stdout.write("Cadeira atrasada " + uc.designacao + " \n" + str(previsao_atual.min) + "/" + str(previsao_atual.max) + ":" + str(previsao) + "\n\n")
                     creditos_atrasados+=uc.ects
                     cadeiras_atrasadas+=1
+                    creditos-=uc.ects
                     uc.ano_conclusao=self.proximo_ano()
                 #Cadeiras do ano
                 elif uc.ano == aluno.ano and uc.nota < 10:
@@ -97,10 +103,15 @@ class Ano_Letivo(models.Model):
                         previsao_atual.min+= 1
                         previsao_atual.med+= 1
                         previsao_atual.max+= 1
+                        creditos -= uc.ects
                     else:
                         previsao_atual.max+= 1
+                        creditos -= uc.ects
                         previsao_atual.med+= cadeiras_atrasadas/12
                     sys.stdout.write("Cadeira do ano " + uc.designacao + " \n" +str(previsao_atual.min) + "/" + str(previsao_atual.max) + ":" + str(previsao) + "\n\n")
                     uc.ano_conclusao = self.proximo_ano()
+                elif uc.ano == aluno.ano+1 and aluno.nr_mecanografico in reprovados and creditos>0:
+                    previsao_atual.max += 1
+                    previsao_atual.med += (creditos/5) / 12
 
         return
