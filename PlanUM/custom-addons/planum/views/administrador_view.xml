@@ -33,4 +33,15 @@
 			</form>
 		</field>
 	</record>
+    <record id="view_tree_administrador" model="ir.ui.view">
+		<field name="name">Administradores</field>
+		<field name="model">planum.administrador</field>
+		<field name="arch" type="xml">
+			<tree>
+                <field name="name" />
+                <field name="nr_mecanografico" />
+                <field name="active" groups="planum.planum_group_admin"/>
+			</tree>
+		</field>
+	</record>
 </odoo>

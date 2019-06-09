@@ -18,7 +18,7 @@ class Aluno(models.Model):
     @api.model
     def create(self, vals):
         curso_id = vals['curso_id']
-        vals['ano']=1
+        vals['ano'] = 1
         curso = self.env['planum.curso'].browse(curso_id)
         uc_plano_estudos = self.env['planum.uc_plano_estudos']
         plano_curso_id=curso.plano_atual()
@@ -55,7 +55,7 @@ class Aluno(models.Model):
 
         security_group = self.env.ref('planum.planum_group_aluno')
         security_group.write({
-            'users': [(4,new_record.user_id.id)]
+            'users': [(4, new_record.user_id.id)]
         })
 
         return new_record
@@ -67,13 +67,17 @@ class Aluno(models.Model):
                 'O aluno deve ter um curso a si associado.')
 
         curso = self.env['planum.curso'].browse(self.curso_id.id)
-        plano_curso_id = curso.plano_atual()
+        plano_curso_id = curso.plano_atual()[0]
 
         # Lançar erro se não existir um plano de curso ativo
-        if plano_curso_id == [None]:
+        if not plano_curso_id:
             raise ValidationError(
                 'O curso selecionado não possui um plano de curso ativo. Selecione outro curso ou tente '
                 'novamente mais tarde.')
+
+        if not self.env['planum.ano_letivo'].search([]).ano:
+            raise ValidationError(
+                'Não existe nenhum ano letivo criado.')
 
     @api.one
     def desativar(self):

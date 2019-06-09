@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_tree_estatistica" model="ir.ui.view">
+		<field name="name">Lista de Estatisticas</field>
+		<field name="model">planum.estatistica</field>
+		<field name="arch" type="xml">
+			<tree default_order='uc_plano_curso_id'>
+                <field name="uc_plano_curso_id" string="UC"/>
+				<field name="aprovados" />
+				<field name="reprovados" />
+			</tree>
+		</field>
+	</record>
+
+    <!-- Search -->
+	<record id="view_search_estatistica" model="ir.ui.view">
+		<field name="name">Filtros da Estatística</field>
+		<field name="model">planum.estatistica</field>
+		<field name="arch" type="xml">
+			<search>
+                <filter name="ano" context="{'group_by':'ano'}"/>
+            </search>
+		</field>
+	</record>
+</odoo>

@@ -48,7 +48,7 @@
 		<field name="name">Lista de Alunos</field>
 		<field name="model">planum.aluno</field>
 		<field name="arch" type="xml">
-			<tree>
+			<tree default_order="nr_mecanografico">
 				<field name="name"/>
 				<field name="nr_mecanografico" />
 				<field name="curso_id" />

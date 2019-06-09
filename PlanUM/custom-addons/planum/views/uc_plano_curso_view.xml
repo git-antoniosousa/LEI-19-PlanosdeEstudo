@@ -18,6 +18,7 @@
 						<field name="semestre" widget="radio" />
 						<field name="fator" />
 						<field name="active" />
+                        <!--
                         <field name="aprovados" />
                         <field name="reprovados"/>
                         <field name="estatisticas">
@@ -35,6 +36,7 @@
                                 <field name="max"/>
                             </tree>
                         </field>
+                        -->
 					</group>
 				</sheet>
 			</form>
@@ -44,8 +46,7 @@
 		<field name="name">Lista de UCs do Plano de Curso</field>
 		<field name="model">planum.uc_plano_curso</field>
 		<field name="arch" type="xml">
-			<tree delete="true" default_order='ano,semestre'>
-				<field name="uc_id" />
+			<tree delete="true" default_order="ano,semestre,designacao">
 				<field name="designacao"/>
 				<field name="codigo_plano" />
 				<field name="ano" />

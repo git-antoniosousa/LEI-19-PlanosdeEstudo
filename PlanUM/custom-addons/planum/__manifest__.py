@@ -24,7 +24,6 @@
         'views/templates.xml',
         'security/planum_security.xml',
         'security/ir.model.access.csv',
-        'views/planum_menu.xml',
         'views/aluno_view.xml',
         'views/plano_estudos_view.xml',
         'views/curso_view.xml',
@@ -36,6 +35,9 @@
         'views/uc_plano_curso_view.xml',
         'views/administrador_view.xml',
         'views/ano_letivo_view.xml',
+        'views/estatistica_view.xml',
+        'views/previsao_view.xml',
+        'views/planum_menu.xml',
     ],
 
     # the module should be featured as an app in the apps list

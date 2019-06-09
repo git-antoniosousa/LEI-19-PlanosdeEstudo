@@ -12,6 +12,7 @@ class UC_Plano_Estudos (models.Model):
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'ID Plano Estudos')
     uc_plano_curso_id = fields.Many2one('planum.uc_plano_curso', 'UC Plano Curso')
     ano = fields.Selection('Ano', related='uc_plano_curso_id.ano')
+    codigo_plano = fields.Char('Código Plano de Curso', related='uc_plano_curso_id.codigo_plano')
     semestre = fields.Selection('Semestre', related='uc_plano_curso_id.semestre')
     fator = fields.Float('Fator', related='uc_plano_curso_id.fator')
     designacao = fields.Char('Designação', related='uc_plano_curso_id.designacao')

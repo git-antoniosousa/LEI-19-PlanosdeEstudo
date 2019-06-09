@@ -16,7 +16,7 @@
 					<group name="group_top">
 						<field name="aluno"/>
 						<field name="ucs" string="Unidades Curriculares">
-                            <tree>
+                            <tree default_order="ano,semestre,designacao">
                             	<field name="designacao"/>
                                 <field name="nota" />
 						        <field name="ano_conclusao" />
