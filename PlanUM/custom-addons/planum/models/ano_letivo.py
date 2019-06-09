@@ -1,5 +1,6 @@
 from odoo import fields, models, api
 import sys
+import re
 from odoo.exceptions import ValidationError
 
 class Ano_Letivo(models.Model):
@@ -137,3 +138,8 @@ class Ano_Letivo(models.Model):
         # Verificar campos obrigatórios
         if not self.ano:
             raise ValidationError('O ano é um campo obrigatório.')
+
+        # Verificar formato do ano letivo
+        check = re.search("[0-9]{4}/[0-9]{4}", self.ano)
+        if not check:
+            raise ValidationError('O ano letivo deve seguir o seguinte formato: 2010/2011.')
