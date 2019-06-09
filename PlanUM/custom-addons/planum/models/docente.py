@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 class Docente(models.Model):
     _inherits = {'res.users': 'user_id'}
@@ -13,6 +14,10 @@ class Docente(models.Model):
 
     @api.model
     def create(self, vals):
+        # Verificar nº mecanográfico
+        if not vals['nr_mecanografico']:
+            raise ValidationError('O nome e o nº mecanográfico são campos obrigatórios.')
+
         vals['login'] = vals['nr_mecanografico']
         # Arranjar maneira de dar password?
         vals['password'] = "temp"

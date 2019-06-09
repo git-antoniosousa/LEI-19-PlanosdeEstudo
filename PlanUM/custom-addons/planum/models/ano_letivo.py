@@ -1,5 +1,6 @@
-from odoo import fields, models
+from odoo import fields, models, api
 import sys
+from odoo.exceptions import ValidationError
 
 class Ano_Letivo(models.Model):
     _name = 'planum.ano_letivo'
@@ -115,3 +116,24 @@ class Ano_Letivo(models.Model):
                     previsao_atual.med += (creditos/5) / 12
 
         return
+
+    @api.constrains('ano')
+    def ano_check(self):
+        # Só pode existir um ano letivo
+        anos_letivos = self.env['planum.ano_letivo'].search([])
+
+        count = 0
+        ano_atual = 0
+        for ano in anos_letivos:
+            count += 1
+
+            if count == 1:
+                ano_atual = ano.ano
+
+        if count > 1:
+            raise ValidationError('Não é possível criar um ano letivo novo porque o ano letivo ' + ano_atual +
+                                  ' está a decorrer.')
+
+        # Verificar campos obrigatórios
+        if not self.ano:
+            raise ValidationError('O ano é um campo obrigatório.')

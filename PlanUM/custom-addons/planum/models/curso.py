@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 class Curso(models.Model):
     _name = 'planum.curso'
@@ -41,3 +42,9 @@ class Curso(models.Model):
     @api.one
     def ativar(self):
         self.active = True
+
+    @api.constrains('codigo', 'designacao')
+    def curso_check(self):
+        # Verificar campos obrigatórios
+        if not self.codigo or not self.designacao:
+            raise ValidationError('O código do curso e a designação são campos obrigatórios.')

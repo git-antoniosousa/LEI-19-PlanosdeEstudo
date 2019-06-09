@@ -17,17 +17,13 @@ class Plano_Curso(models.Model):
     @api.constrains('data_inicio','data_fim', 'ucs', 'curso_id')
     def plano_curso_check(self):
         # Verificar se foram definidas datas de início e fim
-        if not self.data_inicio or not self.data_fim:
+        if not self.data_inicio or not self.data_fim or not self.curso_id:
             raise ValidationError(
                 'O plano de curso deve ter datas de início e fim devidamente definidas.')
 
         elif not self.ucs:
             raise ValidationError(
                 'O plano de curso deve conter pelo menos uma UC.')
-
-        elif not self.curso_id:
-            raise ValidationError(
-                'O plano de curso deve ter um curso associado.')
 
         # Verificar se as datam são posteriores ou iguais à data atual
         elif self.data_inicio < fields.Date.today() or self.data_fim < fields.Date.today():

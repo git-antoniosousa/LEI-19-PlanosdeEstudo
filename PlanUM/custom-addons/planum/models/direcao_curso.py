@@ -1,5 +1,6 @@
 from odoo import fields, models, api
 import sys
+from odoo.exceptions import ValidationError
 
 class Direcao_Curso(models.Model):
     _name = 'planum.direcao_curso'
@@ -7,7 +8,7 @@ class Direcao_Curso(models.Model):
     _order = 'codigo desc'
     active = fields.Boolean('Active?', default=True)
 
-    codigo=fields.Char('Código')
+    codigo = fields.Char('Código')
     docentes = fields.Many2many('planum.docente', string='Docentes')
     curso_id = fields.Many2one('planum.curso', 'Curso ID')
 
@@ -41,3 +42,8 @@ class Direcao_Curso(models.Model):
                 })
         return super().write(vals)
 
+    @api.constrains('codigo', 'curso_id')
+    def direcao_curso_check(self):
+        # Verificar campos obrigatórios
+        if not self.codigo or not self.curso_id:
+            raise ValidationError('O código e o curso são campos obrigatórios.')
