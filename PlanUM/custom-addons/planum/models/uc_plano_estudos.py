@@ -6,8 +6,8 @@ class UC_Plano_Estudos (models.Model):
     _order = 'ano,semestre asc'
     active = fields.Boolean('Active?', default=True)
 
+    #TODO Constraint
     nota = fields.Integer('Nota')
-    #TODO Mudar nome da variável
     ano_conclusao = fields.Char('Ano Letivo')
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'ID Plano Estudos')
     uc_plano_curso_id = fields.Many2one('planum.uc_plano_curso', 'UC Plano Curso')
