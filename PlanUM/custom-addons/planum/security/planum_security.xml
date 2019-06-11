@@ -41,7 +41,7 @@
                <field name="model_id" ref="model_planum_aluno"/>
                <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
                <field name="domain_force">
-                   [('curso_id.direcao_curso.docentes.user_id', '=', user.id)]
+                   [('aluno.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
          -->
