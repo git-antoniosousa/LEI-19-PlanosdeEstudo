@@ -7,14 +7,13 @@
 		<field name="arch" type="xml">
 			<form>
 				<header>
-					<!-- Buttons will go here -->
-					<!--<button name="button_check_isbn" type="object"
-						string="Check ISBN" /> -->
+
 				</header>
 				<sheet>
 					<!-- Content goes here: -->
 					<group name="group_top">
-						<field name="aluno"/>
+						<field name="aluno" readonly="1"/>
+                        <!-- Retirar o create and edit -->
 						<field name="ucs" string="Unidades Curriculares">
                             <tree default_order="ano,semestre,designacao">
                             	<field name="designacao"/>

@@ -43,3 +43,11 @@ class Plano_Curso(models.Model):
                 raise ValidationError(
                     'Já existe um plano de curso definido de ' + str(plano.data_inicio) + ' a ' + str(plano.data_fim) +
                     '. Não pode existir mais do que um plano de curso na mesma data.')
+
+    @api.one
+    def desativar(self):
+        self.active = False
+
+    @api.one
+    def ativar(self):
+        self.active = True

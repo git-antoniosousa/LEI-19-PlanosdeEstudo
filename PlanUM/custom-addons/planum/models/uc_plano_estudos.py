@@ -7,6 +7,7 @@ class UC_Plano_Estudos (models.Model):
     _order = 'ano,semestre asc'
     active = fields.Boolean('Active?', default=True)
 
+    #TODO Constraint
     nota = fields.Integer('Nota')
     ano_conclusao = fields.Char('Ano Letivo')
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'ID Plano Estudos')

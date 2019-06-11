@@ -44,23 +44,12 @@
                    [('aluno.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
-         -->
-        <!-- Testar quando o plano de estudos estiver a dar -->
-        <!--
-             <record model="ir.rule" id="dc_planos_estudo_rule">
+           <record model="ir.rule" id="dc_planos_estudo_rule">
                <field name="name">Um diretor de curso vê apenas os planos de estudo dos alunos do seu curso</field>
                <field name="model_id" ref="model_planum_plano_estudos"/>
                <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
                <field name="domain_force">
                    [('aluno.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
-               </field>
-           </record>
-            <record model="ir.rule" id="dc_docentes_rule">
-               <field name="name">Um diretor de curso vê apenas os docentes do seu curso</field>
-               <field name="model_id" ref="model_planum_docente"/>
-               <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
-               <field name="domain_force">
-                   [('ucs.plano_curso_id.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
             <record model="ir.rule" id="dc_planos_curso_rule">
@@ -69,14 +58,6 @@
                <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
                <field name="domain_force">
                    [('curso_id.direcao_curso.docentes.user_id', '=', user.id)]
-               </field>
-           </record>
-            <record model="ir.rule" id="dc_ucs_rule">
-               <field name="name">Um diretor de curso vê apenas as Unidades Curriculares do seu curso</field>
-               <field name="model_id" ref="model_planum_uc"/>
-               <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
-               <field name="domain_force">
-                   [('ucs_plano_curso.plano_curso_id.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
             <record model="ir.rule" id="dc_direcao_curso_rule">
@@ -90,7 +71,6 @@
          -->
 
         <!-- Record Rules de Docentes -->
-        <!--
             <record model="ir.rule" id="docente_alunos_curso_rule">
                <field name="name">Um docente vê apenas os alunos do seu curso</field>
                <field name="model_id" ref="model_planum_aluno"/>
@@ -99,11 +79,9 @@
                    [('curso_id.planos_curso.ucs.docentes.user_id', '=', user.id)]
                </field>
            </record>
-          -->
         <!-- Record Rules de Alunos -->
-        <!--
             <record model="ir.rule" id="aluno_plano_estudos_rule">
-               <field name="name">Um aluno vê apenas os planos de estudo</field>
+               <field name="name">Um aluno vê apenas o seu plano de estudo</field>
                <field name="model_id" ref="model_planum_plano_estudos"/>
                <field name="groups" eval="[(4,ref('planum_group_aluno'))]"/>
                <field name="domain_force">
@@ -118,17 +96,5 @@
                     [('user_id', '=', user.id)]
                 </field>
             </record>
-      -->
     </data>
-
-
-    <!-- <data noupdate="1">
-			<record id="book_user_rule" model="ir.rule">
-				<field name="name">Library Book User Access</field>
-				<field name="model_id" ref="model_library_book"/>
-				<field name="domain_force"> [('active','=',True)]
-				</field>
-				<field name="groups" eval="[(4,ref('library_group_user'))]"/>
-			</record>
-		</data> -->
 </odoo>

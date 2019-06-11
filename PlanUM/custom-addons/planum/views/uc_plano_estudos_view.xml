@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <odoo>
-	<!--<record id="view_form_uc_plano_estudos" model="ir.ui.view">
+	<record id="view_form_uc_plano_estudos" model="ir.ui.view">
 		<field name="name">UC do Plano de Estudos Form</field>
 		<field name="model">planum.uc_plano_estudos</field>
 		<field name="arch" type="xml">
@@ -8,15 +8,11 @@
 				<sheet>
 					<group name="group_top">
 						<field name="nota" />
-						<field name="ano_conclusao" />
-						<field name="plano_estudos_id" />
-						<field name="uc_plano_curso_id" />
-						<field name="active" />
 					</group>
 				</sheet>
 			</form>
 		</field>
-	</record>-->
+	</record>
 	<record id="view_tree_uc_plano_estudos" model="ir.ui.view">
 		<field name="name">Lista de UCs do Plano de Estudos</field>
 		<field name="model">planum.uc_plano_estudos</field>

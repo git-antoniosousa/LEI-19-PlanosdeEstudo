@@ -6,9 +6,18 @@
 		<field name="arch" type="xml">
 			<form>
 				<header>
-					<!-- Buttons will go here -->
-					<!--<button name="button_check_isbn" type="object"
-						string="Check ISBN" /> -->
+					<button name="desativar"
+                        type="object"
+                        string="Desativar"
+                        attrs="{'invisible':[('active','=',False)]}"
+                        groups="planum.planum_group_direcao_curso"
+                        class="oe_highlight" />
+                    <button name="ativar"
+                        type="object"
+                        string="Ativar"
+                        attrs="{'invisible':[('active','=',True)]}"
+                        groups="planum.planum_group_direcao_curso"
+                        class="oe_highlight" />
 				</header>
 				<sheet>
 					<!-- Content goes here: -->
