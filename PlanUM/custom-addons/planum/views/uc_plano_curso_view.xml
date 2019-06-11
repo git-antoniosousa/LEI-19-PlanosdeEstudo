@@ -18,9 +18,10 @@
 						<field name="semestre" widget="radio" />
 						<field name="fator" />
 						<field name="active" />
+                        <field name="aprovados" readonly="1"/>
+                        <field name="reprovados" readonly="1"/>
                         <!--
-                        <field name="aprovados" />
-                        <field name="reprovados"/>
+
                         <field name="estatisticas">
                             <tree>
                                 <field name="ano"/>

@@ -102,7 +102,9 @@ class Aluno(models.Model):
     @api.one
     def desativar(self):
         self.active = False
+        self.plano_estudos_id.active = False
 
     @api.one
     def ativar(self):
         self.active = True
+        self.plano_estudos_id.active = True
