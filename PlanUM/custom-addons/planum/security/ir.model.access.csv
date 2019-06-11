@@ -13,7 +13,7 @@ access_aluno_plano_estudos,Aluno a Plano Estudos,model_planum_plano_estudos,plan
 access_aluno_uc_plano_estudos,Aluno a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_aluno,1,0,0,0
 access_aluno_curso,Aluno a Curso,model_planum_curso,planum_group_aluno,0,0,0,0
 access_aluno_plano_curso,Aluno a Plano Curso,model_planum_plano_curso,planum_group_aluno,0,0,0,0
-access_aluno_aluno,Aluno a Aluno,model_planum_aluno,planum_group_aluno,1,0,0,0
+access_aluno_aluno,Aluno a Aluno,model_planum_aluno,planum_group_aluno,1,1,0,0
 access_aluno_docente,Aluno a Docente,model_planum_docente,planum_group_aluno,0,0,0,0
 access_aluno_direcao_curso,Aluno a Direcao Curso,model_planum_direcao_curso,planum_group_aluno,0,0,0,0
 access_aluno_uc,Aluno a UC,model_planum_uc,planum_group_aluno,1,0,0,0

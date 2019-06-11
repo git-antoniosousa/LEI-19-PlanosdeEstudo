@@ -7,19 +7,17 @@
 		<field name="arch" type="xml">
 			<form>
 				<header>
-					<!-- Buttons will go here -->
-					<!--<button name="button_check_isbn" type="object"
-						string="Check ISBN" /> -->
                      <button name="desativar"
                         type="object"
                         string="Desativar"
                         attrs="{'invisible':[('active','=',False)]}"
-                        groups="planum.planum_group_admin"
+                        groups="planum.planum_group_direcao_curso"
                         class="oe_highlight" />
                     <button name="ativar"
                         type="object"
                         string="Ativar"
                         attrs="{'invisible':[('active','=',True)]}"
+                        groups="planum.planum_group_direcao_curso"
                         class="oe_highlight" />
 				</header>
 				<sheet>
@@ -30,14 +28,54 @@
 							<field name="nr_mecanografico" />
 							<field name="media_acesso" />
 							<field name="estatuto" widget="radio" />
-							<field name="active" groups="planum.planum_group_admin"/>
+							<field name="active" groups="planum.planum_group_direcao_curso"/>
 						</group>
 						<group name="group_right">
 							<field name="curso_id" string="Curso"/>
                             <field name="ano" string="Ano"/>
-                            <!--field name="login"/-->
 						</group>
 					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+    <!-- Form Perfil -->
+	<record id="view_form_perfil" model="ir.ui.view">
+		<field name="name">Perfil Form</field>
+		<field name="model">planum.aluno</field>
+		<field name="arch" type="xml">
+			<form>
+				<header>
+                    <button name="mudar_password" string="Mudar Password" type="object"/>
+				</header>
+				<sheet>
+					<!-- Content goes here: -->
+					<group name="group_top">
+						<group name="group_left" >
+							<field name="name" readonly="1" />
+							<field name="nr_mecanografico" readonly="1" />
+							<field name="media_acesso" readonly="1" />
+							<field name="estatuto" widget="radio" readonly="1" />
+						</group>
+						<group name="group_right">
+							<field name="curso_id" string="Curso" readonly="1"/>
+                            <field name="ano" string="Ano" readonly="1"/>
+						</group>
+					</group>
+				</sheet>
+			</form>
+		</field>
+	</record>
+
+    <!-- Change Password Form -->
+	<record id="view_form_passowrd" model="ir.ui.view">
+		<field name="name">Mudar Password</field>
+		<field name="model">res.users</field>
+		<field name="arch" type="xml">
+			<form>
+				<sheet>
+					<field name="password" />
 				</sheet>
 			</form>
 		</field>

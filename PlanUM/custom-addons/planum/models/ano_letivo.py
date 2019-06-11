@@ -118,6 +118,25 @@ class Ano_Letivo(models.Model):
 
         return
 
+    @api.model_cr
+    def init(self):
+        # Criar ano letivo caso não exista ao inicializar
+        anos_letivos = self.env['planum.ano_letivo'].search([])
+
+        if not anos_letivos:
+            data = str(fields.Date.today()).split("-")
+            mes = int(data[1])
+            ano = int(data[0])
+
+            if 1 <= mes <= 8:
+                ano = str(ano - 1) + '/' + str(ano)
+            else:
+                ano = str(ano) + '/' + str(ano + 1)
+
+            self.env['planum.ano_letivo'].create({
+                'ano': ano
+            })
+
     @api.constrains('ano')
     def ano_check(self):
         # Só pode existir um ano letivo

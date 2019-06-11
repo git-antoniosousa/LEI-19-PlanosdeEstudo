@@ -18,7 +18,7 @@ class Administrador(models.Model):
         vals['login'] = vals['nr_mecanografico']
 
         # Arranjar maneira de dar password?
-        vals['password'] = "temp"
+        vals['password'] = vals['nr_mecanografico']
         new_record = super().create(vals)
         security_group = self.env.ref('planum.planum_group_admin')
         security_group.write({

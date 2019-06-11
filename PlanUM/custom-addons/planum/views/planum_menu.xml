@@ -4,11 +4,12 @@
 	<menuitem id="menu_planum"
 		name="PlanUM" />
 	<!-- Ação para consultar alunos -->
-	<act_window id="action_aluno"
-		name="Alunos"
-		res_model="planum.aluno"
-		view_mode="tree,form"
-	/>
+    <record id="action_aluno" model="ir.actions.act_window">
+        <field name="name">Alunos</field>
+        <field name="res_model">planum.aluno</field>
+        <field name="view_mode">tree,form</field>
+        <field name="views">[(view_form_aluno, 'form'),(view_tree_aluno, 'tree')]</field>
+    </record>
 	<!-- Item do menu para consultar alunos -->
 	<menuitem id="menu_aluno"
 		name="Alunos"
@@ -16,11 +17,20 @@
 		action="action_aluno"
         groups="planum_group_docente,planum_group_direcao_curso"
 	/>
+	<!-- Ação para consultar perfil do aluno -->
+    <record id="action_aluno_perfil" model="ir.actions.act_window">
+        <field name="name">Perfil</field>
+        <field name="res_model">planum.aluno</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('planum.view_tree_aluno')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('planum.view_form_perfil')})]"/>
+    </record>
 	<!-- Item do menu para consultar perfil do aluno -->
 	<menuitem id="menu_aluno_perfil"
 		name="Perfil"
 		parent="menu_planum"
-		action="action_aluno"
+		action="action_aluno_perfil"
 		groups="planum_group_aluno"
 	/>
 	<!-- Ação para consultar docentes -->
@@ -49,12 +59,18 @@
 		action="action_plano_estudos"
 		groups="planum_group_aluno"
 	/>
+    <!-- Ação para consultar o plano de estudos -->
+	<act_window id="action_plano_estudos"
+		name="Planos de Estudos"
+		res_model="planum.plano_estudos"
+		view_mode="tree,form"
+	/>
 	<!-- Item do menu para consultar o plano de estudos -->
-	<menuitem id="menu_planos_estudos"
+	<menuitem id="menu_plano_estudos"
 		name="Planos de Estudos"
 		parent="menu_planum"
 		action="action_plano_estudos"
-		groups="planum_group_direcao_curso"
+		groups="planum_group_aluno,planum_group_direcao_curso"
 	/>
 	<!-- Ação para consultar os cursos -->
 	<act_window id="action_curso"
