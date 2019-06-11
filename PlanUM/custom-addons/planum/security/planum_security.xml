@@ -71,7 +71,6 @@
          -->
 
         <!-- Record Rules de Docentes -->
-        <!--
             <record model="ir.rule" id="docente_alunos_curso_rule">
                <field name="name">Um docente vê apenas os alunos do seu curso</field>
                <field name="model_id" ref="model_planum_aluno"/>
@@ -80,9 +79,7 @@
                    [('curso_id.planos_curso.ucs.docentes.user_id', '=', user.id)]
                </field>
            </record>
-          -->
         <!-- Record Rules de Alunos -->
-        <!--
             <record model="ir.rule" id="aluno_plano_estudos_rule">
                <field name="name">Um aluno vê apenas o seu plano de estudo</field>
                <field name="model_id" ref="model_planum_plano_estudos"/>
@@ -99,6 +96,5 @@
                     [('user_id', '=', user.id)]
                 </field>
             </record>
-      -->
     </data>
 </odoo>
