@@ -7,7 +7,6 @@ class UC_Plano_Estudos (models.Model):
     _order = 'ano,semestre asc'
     active = fields.Boolean('Active?', default=True)
 
-    #TODO Constraint
     nota = fields.Integer('Nota')
     ano_conclusao = fields.Char('Ano Letivo')
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'ID Plano Estudos')
@@ -25,5 +24,5 @@ class UC_Plano_Estudos (models.Model):
         if not self.nota:
             raise ValidationError('Deve ser atribuída uma nota.')
 
-        if 0 <= self.nota <= 20:
+        if self.nota < 0 or self.nota > 20:
             raise ValidationError('Deve ser atribuída uma nota entre 0 e 20 valores.')
