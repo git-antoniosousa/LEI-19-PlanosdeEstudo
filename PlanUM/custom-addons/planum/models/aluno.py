@@ -2,7 +2,7 @@ from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 
 class Aluno(models.Model):
-    _inherits ={'res.users' : 'user_id'}
+    _inherits ={'res.users': 'user_id'}
     _name = 'planum.aluno'
     _description = 'Aluno'
     _order = 'name desc'
@@ -10,10 +10,28 @@ class Aluno(models.Model):
 
     nr_mecanografico = fields.Char('Nº Mecanográfico')
     media_acesso = fields.Float('Média Acesso',(5,3))
-    estatuto=fields.Selection([(1,'Estudante'),(2,'Estudante Trabalhador'),(3,'Estudante Atleta')], default=1)
-    ano = fields.Selection([(1,'1º ano')], default=1)
+    estatuto = fields.Selection([(1,'Estudante'),(2,'Estudante Trabalhador'),(3,'Estudante Atleta')], default=1)
+    ano = fields.Selection([(1,'1º ano'),(2,'2º ano'),(3,'3º ano'),(4,'4º ano'),(5,'5º ano'),(6,'6º ano')], default=1)
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'Plano Estudos ID')
     curso_id = fields.Many2one('planum.curso', 'Curso ID')
+
+    @api.multi
+    def mudar_password(self):
+        view_id = self.env.ref('planum.view_form_passowrd').id
+        context = self._context.copy()
+
+        return {
+            'name': 'Mudar Password',
+            'view_type': 'form',
+            'view_mode': 'form',
+            'views': [(view_id, 'form')],
+            'res_model': 'planum.aluno',
+            'view_id': view_id,
+            'type': 'ir.actions.act_window',
+            'res_id': self.id,
+            'target': 'new',
+            'context': context,
+        }
 
     @api.model
     def create(self, vals):
@@ -36,7 +54,6 @@ class Aluno(models.Model):
             if uc.ano == 1:
                 uc_plano_estudos.create({
                     'nota': 0,
-                    # ONDE GUARDAR O ANO LETIVO
                     'ano_conclusao': ano_atual,
                     'plano_estudos_id': plano_estudos.id,
                     'uc_plano_curso_id': uc.id
@@ -51,9 +68,10 @@ class Aluno(models.Model):
 
         # Define plano de estudos
         vals['plano_estudos_id'] = plano_estudos.id
+        # Login
         vals['login'] = vals['nr_mecanografico']
         # Arranjar maneira de dar password?
-        vals['password'] = "temp"
+        vals['password'] = vals['nr_mecanografico']
         new_record = super().create(vals)
 
         security_group = self.env.ref('planum.planum_group_aluno')
