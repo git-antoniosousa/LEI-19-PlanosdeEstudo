@@ -8,24 +8,24 @@
     <record id="planum_group_aluno" model="res.groups">
         <field name="name">Aluno</field>
         <field name="category_id" ref="module_planum_category"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_erp_manager'))]"/>
     </record>
 
     <!-- PlanUM Direção de Curso Group -->
     <record id="planum_group_direcao_curso" model="res.groups">
         <field name="name">Direção de Curso</field>
         <field name="category_id" ref="module_planum_category"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_system'))]"/>
     </record>
 
     <!-- PlanUM Docente Group -->
     <record id="planum_group_docente" model="res.groups">
         <field name="name">Docente</field>
         <field name="category_id" ref="module_planum_category"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_system'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_erp_manager'))]"/>
     </record>
 
-    <!-- PlanUM Administrador Group (4, ref('base.group_erp_manager')), -->
+    <!-- PlanUM Administrador Group -->
     <record id="planum_group_admin" model="res.groups">
         <field name="name">Administrador</field>
         <field name="category_id" ref="module_planum_category"/>
