@@ -2,7 +2,7 @@ from odoo import fields, models, api
 from odoo.exceptions import ValidationError
 
 class Aluno(models.Model):
-    _inherits ={'res.users': 'user_id'}
+    _inherits = {'res.users': 'user_id'}
     _name = 'planum.aluno'
     _description = 'Aluno'
     _order = 'name desc'
@@ -14,6 +14,16 @@ class Aluno(models.Model):
     ano = fields.Selection([(1,'1º ano'),(2,'2º ano'),(3,'3º ano'),(4,'4º ano'),(5,'5º ano'),(6,'6º ano')], default=1)
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'Plano Estudos ID')
     curso_id = fields.Many2one('planum.curso', 'Curso ID')
+    ucs_plano_estudos = fields.One2many('planum.uc_plano_estudos', 'plano_estudos_id', string='UCs Plano de Estudos', related='plano_estudos_id.ucs')
+    media_parcial = fields.Float('Média Parcial', related='plano_estudos_id.media_parcial')
+    media_licenciatura = fields.Float('Média Licenciatura', related='plano_estudos_id.media_licenciatura')
+    ultima_inscricao=fields.One2many('planum.uc_plano_estudos', string='Última Inscrição', compute='_compute_ultima_inscricao')
+
+    @api.depends('ucs_plano_estudos')
+    def _compute_ultima_inscricao(self):
+        for uc in self.ucs_plano_estudos:
+            if uc.ano_conclusao == self.env['planum.ano_letivo'].search([]).ano:
+                self.ultima_inscricao += uc
 
     @api.model
     def create(self, vals):

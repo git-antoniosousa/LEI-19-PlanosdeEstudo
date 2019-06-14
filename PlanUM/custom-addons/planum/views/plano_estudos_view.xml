@@ -13,19 +13,19 @@
 					<!-- Content goes here: -->
 					<group name="group_top">
 						<field name="aluno" readonly="1"/>
-                        <!-- Retirar o create and edit -->
+						<!-- Retirar o create and edit -->
 						<field name="ucs" string="Unidades Curriculares">
-                            <tree default_order="ano,semestre,designacao">
-                            	<field name="designacao"/>
-                                <field name="nota" />
-						        <field name="ano_conclusao" />
-						        <field name="fator"/>
+							<tree default_order="ano,semestre,designacao">
+								<field name="designacao"/>
+								<field name="nota" />
+								<field name="ano_conclusao" />
+								<field name="fator"/>
 								<field name="ano"/>
 								<field name="semestre"/>
 								<field name="ects"/>
 								<field name="obrigatoria"/>
-                            </tree>
-                        </field>
+							</tree>
+						</field>
 						<field name="media_parcial" />
 						<field name="media_licenciatura" />
 						<field name="active" groups="planum.planum_group_admin"/>
@@ -45,7 +45,7 @@
 				<field name="aluno_nr" string="Nº Mecanográfico"/>
 			</tree>
 		</field>
-	</record>	
+	</record>
 
 	<!-- Search -->
 	<record id="view_search_plano_estudos" model="ir.ui.view">
@@ -53,11 +53,9 @@
 		<field name="model">planum.plano_estudos</field>
 		<field name="arch" type="xml">
 			<search>
-              <field name="aluno" string="Nome"
-                  filter_domain="[('aluno.nome','ilike',self)]"/>
-              <field name="aluno" string="Nº Mecanográfico"
-                  filter_domain="[('aluno.nr_mecanografico','ilike',self)]"/>
-            </search>
+				<field name="aluno" string="Nome" filter_domain="[('aluno.nome','ilike',self)]"/>
+				<field name="aluno" string="Nº Mecanográfico" filter_domain="[('aluno.nr_mecanografico','ilike',self)]"/>
+			</search>
 		</field>
 	</record>
 </odoo>
