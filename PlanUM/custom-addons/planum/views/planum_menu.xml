@@ -8,7 +8,6 @@
         <field name="name">Alunos</field>
         <field name="res_model">planum.aluno</field>
         <field name="view_mode">tree,form</field>
-        <field name="views">[(view_form_aluno, 'form'),(view_tree_aluno, 'tree')]</field>
     </record>
 	<!-- Item do menu para consultar alunos -->
 	<menuitem id="menu_aluno"
@@ -22,9 +21,6 @@
         <field name="name">Perfil</field>
         <field name="res_model">planum.aluno</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[(5, 0, 0),
-        (0, 0, {'view_mode': 'tree', 'view_id': ref('planum.view_tree_aluno')}),
-        (0, 0, {'view_mode': 'form', 'view_id': ref('planum.view_form_perfil')})]"/>
     </record>
 	<!-- Item do menu para consultar perfil do aluno -->
 	<menuitem id="menu_aluno_perfil"
@@ -44,7 +40,7 @@
 		name="Docentes"
 		parent="menu_planum"
 		action="action_docente"
-		groups="planum_group_direcao_curso,planum_group_admin"
+		groups="planum_group_admin"
 	/>
 	<!-- Ação para consultar o plano de estudos -->
 	<act_window id="action_plano_estudos"
@@ -140,28 +136,41 @@
 		action="action_uc"
 		groups="planum_group_direcao_curso"
 	/>
-	<!-- Ação para consultar as Direções de Curso -->
+    <!-- Ação para consultar as Direção de Curso -->
 	<act_window id="action_direcao_curso"
+		name="Direção de Curso"
+		res_model="planum.direcao_curso"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar as Direção de Curso-->
+	<menuitem id="menu_direcao_curso"
+		name="Direção de Curso"
+		parent="menu_planum"
+		action="action_direcao_curso"
+		groups="planum_group_direcao_curso"
+	/>
+    <!-- Ação para consultar as Direções de Curso -->
+	<act_window id="action_direcoes_curso"
 		name="Direções de Curso"
 		res_model="planum.direcao_curso"
 		view_mode="tree,form"
 	/>
 	<!-- Item do menu para consultar as Direções de Curso-->
-	<menuitem id="menu_direcao_curso"
+	<menuitem id="menu_direcoes_curso"
 		name="Direções de Curso"
 		parent="menu_planum"
-		action="action_direcao_curso"
-		groups="planum_group_admin,planum_group_direcao_curso"
+		action="action_direcoes_curso"
+		groups="planum_group_admin"
 	/>
     <!-- Ação para consultar as Direções de Curso -->
 	<act_window id="action_administrador"
-		name="Administrador"
+		name="Administradores"
 		res_model="planum.administrador"
 		view_mode="tree,form"
 	/>
     <!-- Item do menu para inscrever administrador-->
 	<menuitem id="menu_administrador"
-		name="Administrador"
+		name="Administradores"
 		parent="menu_planum"
 		action="action_administrador"
 		groups="planum_group_admin"

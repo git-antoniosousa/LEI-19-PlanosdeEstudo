@@ -8,7 +8,7 @@
     <record id="planum_group_aluno" model="res.groups">
         <field name="name">Aluno</field>
         <field name="category_id" ref="module_planum_category"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_erp_manager'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <!-- PlanUM Direção de Curso Group -->
@@ -22,7 +22,7 @@
     <record id="planum_group_docente" model="res.groups">
         <field name="name">Docente</field>
         <field name="category_id" ref="module_planum_category"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_erp_manager'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <!-- PlanUM Administrador Group -->

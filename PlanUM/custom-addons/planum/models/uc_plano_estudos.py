@@ -21,8 +21,6 @@ class UC_Plano_Estudos (models.Model):
 
     @api.constrains('nota')
     def uc_plano_estudos_check(self):
-        if not self.nota:
-            raise ValidationError('Deve ser atribuída uma nota.')
-
-        if self.nota < 0 or self.nota > 20:
-            raise ValidationError('Deve ser atribuída uma nota entre 0 e 20 valores.')
+        if self.nota:
+            if self.nota < 10 or self.nota > 20:
+                raise ValidationError('Deve ser atribuída uma nota entre 10 e 20 valores.')

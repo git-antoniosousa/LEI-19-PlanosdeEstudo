@@ -85,7 +85,7 @@ class Ano_Letivo(models.Model):
             sys.stdout.write("Aluno " + str(aluno.nr_mecanografico) + "\n")
             creditos_atrasados = 0
             cadeiras_atrasadas = 0
-            creditos=60
+            creditos = 60
             # Percorrer UCs por ordem
             for uc in sorted(aluno.plano_estudos_id.ucs, key=lambda uc: uc.ano):
                 previsao_atual = prev[uc.designacao]

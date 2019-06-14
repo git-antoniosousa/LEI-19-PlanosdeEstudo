@@ -1,4 +1,5 @@
 from odoo import fields, models, api
+from odoo.exceptions import ValidationError
 
 class UC_Plano_Curso (models.Model):
     _name = 'planum.uc_plano_curso'
@@ -45,10 +46,14 @@ class UC_Plano_Curso (models.Model):
         for uc in self:
             uc.codigo_designacao = uc.codigo_plano + ' - ' + uc.designacao
 
-    #TODO REFAZER ISTO
     def previsao_atual(self):
         prev=None
         for previsao in self.previsoes:
             if prev is None or int(prev.ano[0:4]) < int(previsao.ano[0:4]):
                 prev=previsao
         return prev
+
+    @api.constrains('uc_id', 'designacao', 'codigo_plano', 'fator')
+    def uc_plano_estudos_check(self):
+        if not self.uc_id or not self.designacao or not self.codigo_plano or not self.fator:
+                raise ValidationError('É obrigatório preencher todos os campos do formulário.')
