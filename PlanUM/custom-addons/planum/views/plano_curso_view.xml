@@ -6,18 +6,8 @@
 		<field name="arch" type="xml">
 			<form>
 				<header>
-					<button name="desativar"
-                        type="object"
-                        string="Desativar"
-                        attrs="{'invisible':[('active','=',False)]}"
-                        groups="planum.planum_group_direcao_curso"
-                        class="oe_highlight" />
-                    <button name="ativar"
-                        type="object"
-                        string="Ativar"
-                        attrs="{'invisible':[('active','=',True)]}"
-                        groups="planum.planum_group_direcao_curso"
-                        class="oe_highlight" />
+					<button name="desativar" type="object" string="Desativar" attrs="{'invisible':[('active','=',False)]}" groups="planum.planum_group_direcao_curso" class="oe_highlight" />
+					<button name="ativar" type="object" string="Ativar" attrs="{'invisible':[('active','=',True)]}" groups="planum.planum_group_direcao_curso" class="oe_highlight" />
 				</header>
 				<sheet>
 					<!-- Content goes here: -->
@@ -37,10 +27,10 @@
 		<field name="model">planum.plano_curso</field>
 		<field name="arch" type="xml">
 			<tree>
-                <field name="curso_id" string="Curso"/>
+				<field name="curso_id" string="Curso"/>
 				<field name="data_inicio" string="Data de Início" />
 				<field name="data_fim" string="Data de Fim" />
-                <field name="active"/>
+				<field name="active"/>
 			</tree>
 		</field>
 	</record>
@@ -49,12 +39,8 @@
 		<field name="model">planum.plano_curso</field>
 		<field name="arch" type="xml">
 			<search>
-              <filter name="plano_curso_not_active"
-				  string="Not Active"
-				  domain="[('active', '=', False)]" />
-			  <filter name="plano_curso_active"
-				  string="Active"
-				  domain="[('active', '=', True)]" />
+              <filter name="plano_curso_not_active" string="Not Active" domain="[('active', '=', False)]" />
+			  <filter name="plano_curso_active" string="Active" domain="[('active', '=', True)]" />
             </search>
 		</field>
 	</record>-->

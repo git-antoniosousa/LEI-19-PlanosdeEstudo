@@ -7,18 +7,15 @@ class Administrador(models.Model):
     _description = 'Administrador'
     _order = 'name desc'
     active = fields.Boolean('Active?', default=True)
-    nr_mecanografico = fields.Char('Nº Mecanográfico')
 
     @api.model
     def create(self, vals):
-        # Verificar nº mecanográfico
-        if not vals['nr_mecanografico']:
+        # Verificar email
+        if not vals['email']:
             raise ValidationError('É obrigatório preencher todos os campos do formulário.')
 
-        vals['login'] = vals['nr_mecanografico']
+        vals['login'] = vals['email']
 
-        # Arranjar maneira de dar password?
-        vals['password'] = "temp"
         new_record = super().create(vals)
         security_group = self.env.ref('planum.planum_group_admin')
         security_group.write({
@@ -26,11 +23,10 @@ class Administrador(models.Model):
         })
         return new_record
 
-    @api.constrains('nr_mecanografico')
+    @api.constrains('email')
     def administrador_check(self):
-        # Verificar campos obrigatórios
-        if not self.nr_mecanografico:
-            raise ValidationError('O nome e o nº mecanográfico são campos obrigatórios.')
+        if not self.email:
+            raise ValidationError('O email e o nome são campos obrigatório.')
 
     @api.one
     def desativar(self):

@@ -1,138 +1,79 @@
 <?xml version="1.0"?>
 <odoo>
 	<!-- PlanUM App Menu -->
-	<menuitem id="menu_planum"
-		name="PlanUM" />
+	<menuitem id="menu_planum" name="PlanUM" />
 	<!-- Ação para consultar alunos -->
-    <record id="action_aluno" model="ir.actions.act_window">
-        <field name="name">Alunos</field>
-        <field name="res_model">planum.aluno</field>
-        <field name="view_mode">tree,form</field>
-        <field name="views">[(view_form_aluno, 'form'),(view_tree_aluno, 'tree')]</field>
-    </record>
+	<record id="action_aluno" model="ir.actions.act_window">
+		<field name="name">Alunos</field>
+		<field name="res_model">planum.aluno</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_ids" eval="[(5, 0, 0),
+        (0, 0, {'view_mode': 'tree', 'view_id': ref('planum.view_tree_aluno')}),
+        (0, 0, {'view_mode': 'form', 'view_id': ref('planum.view_form_aluno')})]"/>
+	</record>
 	<!-- Item do menu para consultar alunos -->
-	<menuitem id="menu_aluno"
-		name="Alunos"
-		parent="menu_planum"
-		action="action_aluno"
-        groups="planum_group_docente,planum_group_direcao_curso"
-	/>
+	<menuitem id="menu_aluno" name="Alunos" parent="menu_planum" action="action_aluno" groups="planum_group_docente,planum_group_direcao_curso" />
 	<!-- Ação para consultar perfil do aluno -->
     <record id="action_aluno_perfil" model="ir.actions.act_window">
         <field name="name">Perfil</field>
         <field name="res_model">planum.aluno</field>
         <field name="view_mode">tree,form</field>
-        <field name="view_ids" eval="[(5, 0, 0),
+    </record>
+	<record id="action_aluno_perfil" model="ir.actions.act_window">
+		<field name="name">Perfil</field>
+		<field name="res_model">planum.aluno</field>
+		<field name="view_mode">tree,form</field>
+		<field name="view_ids" eval="[(5, 0, 0),
         (0, 0, {'view_mode': 'tree', 'view_id': ref('planum.view_tree_aluno')}),
         (0, 0, {'view_mode': 'form', 'view_id': ref('planum.view_form_perfil')})]"/>
-    </record>
+	</record>
 	<!-- Item do menu para consultar perfil do aluno -->
-	<menuitem id="menu_aluno_perfil"
-		name="Perfil"
-		parent="menu_planum"
-		action="action_aluno_perfil"
-		groups="planum_group_aluno"
-	/>
+	<menuitem id="menu_aluno_perfil" name="Perfil" parent="menu_planum" action="action_aluno_perfil" groups="planum_group_aluno" />
 	<!-- Ação para consultar docentes -->
-	<act_window id="action_docente"
-		name="Docentes"
-		res_model="planum.docente"
-		view_mode="tree,form"
-	/>
+	<act_window id="action_docente" name="Docentes" res_model="planum.docente" view_mode="tree,form" />
 	<!-- Item do menu para consultar docentes-->
 	<menuitem id="menu_docente"
 		name="Docentes"
 		parent="menu_planum"
 		action="action_docente"
-		groups="planum_group_direcao_curso,planum_group_admin"
-	/>
-	<!-- Ação para consultar o plano de estudos -->
-	<act_window id="action_plano_estudos"
-		name="Plano de Estudos"
-		res_model="planum.plano_estudos"
-		view_mode="tree,form"
-	/>
-	<!-- Item do menu para consultar o plano de estudos -->
-	<menuitem id="menu_plano_estudos"
-		name="Plano de Estudos"
-		parent="menu_planum"
-		action="action_plano_estudos"
-		groups="planum_group_aluno"
-	/>
-    <!-- Ação para consultar o plano de estudos -->
-	<act_window id="action_plano_estudos"
-		name="Planos de Estudos"
-		res_model="planum.plano_estudos"
-		view_mode="tree,form"
-	/>
-	<!-- Item do menu para consultar o plano de estudos -->
-	<menuitem id="menu_plano_estudos"
-		name="Planos de Estudos"
-		parent="menu_planum"
-		action="action_plano_estudos"
-		groups="planum_group_aluno,planum_group_direcao_curso"
-	/>
-	<!-- Ação para consultar os cursos -->
-	<act_window id="action_curso"
-		name="Cursos"
-		res_model="planum.curso"
-		view_mode="tree,form"
-		context="{'search_default_curso_active': True, 'search_default_curso_not_active': True}"
-	/>
-	<!-- Item do menu para consultar os cursos -->
-	<menuitem id="menu_curso"
-		name="Cursos"
-		parent="menu_planum"
-		action="action_curso"
 		groups="planum_group_admin"
 	/>
+	<!-- Ação para consultar o plano de estudos -->
+	<act_window id="action_plano_estudos" name="Plano de Estudos" res_model="planum.plano_estudos" view_mode="tree,form" />
+	<!-- Item do menu para consultar o plano de estudos
+	<menuitem id="menu_plano_estudos" name="Plano de Estudos" parent="menu_planum" action="action_plano_estudos" groups="planum_group_aluno" /> -->
+	<!-- Ação para consultar o plano de estudos -->
+	<act_window id="action_plano_estudos" name="Planos de Estudos" res_model="planum.plano_estudos" view_mode="tree,form" />
+	<!-- Item do menu para consultar o plano de estudos -->
+	<menuitem id="menu_plano_estudos" name="Planos de Estudos" parent="menu_planum" action="action_plano_estudos" groups="planum_group_direcao_curso" />
+	<!-- Ação para consultar os cursos -->
+	<act_window id="action_curso" name="Cursos" res_model="planum.curso" view_mode="tree,form" context="{'search_default_curso_active': True, 'search_default_curso_not_active': True}" />
+	<!-- Item do menu para consultar os cursos -->
+	<menuitem id="menu_curso" name="Cursos" parent="menu_planum" action="action_curso" groups="planum_group_admin" />
 	<!-- Ação para consultar os planos de curso -->
-	<act_window id="action_plano_curso"
-		name="Planos de Curso"
-		res_model="planum.plano_curso"
-		view_mode="tree,form"
-	/>
+	<act_window id="action_plano_curso" name="Planos de Curso" res_model="planum.plano_curso" view_mode="tree,form" />
 	<!-- Item do menu para consultar os planos de curso -->
-	<menuitem id="menu_plano_curso"
-		name="Planos de Curso"
-		parent="menu_planum"
-		action="action_plano_curso"
-		groups="planum_group_direcao_curso"
-	/>
-    <!-- Ação para consultar as previsões -->
+	<menuitem id="menu_plano_curso" name="Planos de Curso" parent="menu_planum" action="action_plano_curso" groups="planum_group_direcao_curso" />
+	<!-- Ação para consultar as previsões -->
 	<record id="action_previsoes" model="ir.actions.act_window">
-        <field name="name">Previsões</field>
-        <field name="res_model">planum.previsao</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_ano': 1}</field>
-    </record>
+		<field name="name">Previsões</field>
+		<field name="res_model">planum.previsao</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_ano': 1}</field>
+	</record>
 	<!-- Item do menu para consultar as previsões -->
-	<menuitem id="menu_previsoes"
-		name="Previsões"
-		parent="menu_planum"
-		action="action_previsoes"
-		groups="planum_group_direcao_curso"
-	/>
-    <!-- Ação para consultar as estatísticas -->
-    <record id="action_estatisticas" model="ir.actions.act_window">
-        <field name="name">Estatísticas</field>
-        <field name="res_model">planum.estatistica</field>
-        <field name="view_mode">tree,form</field>
-        <field name="context">{'search_default_ano': 1}</field>
-    </record>
+	<menuitem id="menu_previsoes" name="Previsões" parent="menu_planum" action="action_previsoes" groups="planum_group_direcao_curso" />
+	<!-- Ação para consultar as estatísticas -->
+	<record id="action_estatisticas" model="ir.actions.act_window">
+		<field name="name">Estatísticas</field>
+		<field name="res_model">planum.estatistica</field>
+		<field name="view_mode">tree,form</field>
+		<field name="context">{'search_default_ano': 1}</field>
+	</record>
 	<!-- Item do menu para consultar as estatísticas -->
-	<menuitem id="menu_estatisticas"
-		name="Estatísticas"
-		parent="menu_planum"
-		action="action_estatisticas"
-		groups="planum_group_direcao_curso"
-	/>
+	<menuitem id="menu_estatisticas" name="Estatísticas" parent="menu_planum" action="action_estatisticas" groups="planum_group_direcao_curso" />
 	<!-- Ação para consultar as UCs -->
-	<act_window id="action_uc"
-		name="Unidades Curriculares"
-		res_model="planum.uc"
-		view_mode="tree,form"
-	/>
+	<act_window id="action_uc" name="Unidades Curriculares" res_model="planum.uc" view_mode="tree,form" />
 	<!-- Item do menu para consultar as UCs-->
 	<menuitem id="menu_uc"
 		name="Unidades Curriculares"
@@ -140,45 +81,48 @@
 		action="action_uc"
 		groups="planum_group_direcao_curso"
 	/>
-	<!-- Ação para consultar as Direções de Curso -->
+    <!-- Ação para consultar as Direção de Curso -->
 	<act_window id="action_direcao_curso"
+		name="Direção de Curso"
+		res_model="planum.direcao_curso"
+		view_mode="tree,form"
+	/>
+	<!-- Item do menu para consultar as Direção de Curso-->
+	<menuitem id="menu_direcao_curso"
+		name="Direção de Curso"
+		parent="menu_planum"
+		action="action_direcao_curso"
+		groups="planum_group_direcao_curso"
+	/>
+    <!-- Ação para consultar as Direções de Curso -->
+	<act_window id="action_direcoes_curso"
 		name="Direções de Curso"
 		res_model="planum.direcao_curso"
 		view_mode="tree,form"
 	/>
 	<!-- Item do menu para consultar as Direções de Curso-->
-	<menuitem id="menu_direcao_curso"
+	<menuitem id="menu_direcoes_curso"
 		name="Direções de Curso"
 		parent="menu_planum"
-		action="action_direcao_curso"
-		groups="planum_group_admin,planum_group_direcao_curso"
+		action="action_direcoes_curso"
+		groups="planum_group_admin"
 	/>
     <!-- Ação para consultar as Direções de Curso -->
 	<act_window id="action_administrador"
-		name="Administrador"
+		name="Administradores"
 		res_model="planum.administrador"
 		view_mode="tree,form"
 	/>
-    <!-- Item do menu para inscrever administrador-->
+    <!-- Item do menu para ver administradores -->
 	<menuitem id="menu_administrador"
-		name="Administrador"
+		name="Administradores"
 		parent="menu_planum"
 		action="action_administrador"
 		groups="planum_group_admin"
 	/>
-
-    <!-- Ação para consultar o Ano Letivo -->
-	<act_window id="action_ano_letivo"
-		name="Ano Letivo"
-		res_model="planum.ano_letivo"
-		view_mode="tree,form"
-	/>
+	<!-- Ação para consultar o Ano Letivo -->
+	<act_window id="action_ano_letivo" name="Ano Letivo" res_model="planum.ano_letivo" view_mode="tree,form" />
 	<!-- Item do menu para consultar o Ano Letivo -->
-	<menuitem id="menu_ano_letivo"
-		name="Ano Letivo"
-		parent="menu_planum"
-		action="action_ano_letivo"
-		groups="planum_group_direcao_curso"
-	/>
+	<menuitem id="menu_ano_letivo" name="Ano Letivo" parent="menu_planum" action="action_ano_letivo" groups="planum_group_direcao_curso" />
 
 </odoo>
