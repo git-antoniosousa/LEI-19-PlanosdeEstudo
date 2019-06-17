@@ -66,3 +66,21 @@ class Direcao_Curso(models.Model):
         # Verificar campos obrigatórios
         if not self.codigo or not self.curso_id:
             raise ValidationError('O código e o curso são campos obrigatórios.')
+
+        direcoes_curso = self.env['planum.direcao_curso'].search([('codigo', '=', self.codigo)])
+
+        c = 0
+        for dc in direcoes_curso:
+            c += 1
+
+        if c > 1:
+            raise ValidationError('Já existe uma direção de curso com o código ' + self.codigo + '.')
+
+        direcoes_curso = self.env['planum.direcao_curso'].search([('curso_id', '=', self.curso_id.id)])
+
+        c = 0
+        for dc in direcoes_curso:
+            c += 1
+
+        if c > 1:
+            raise ValidationError('Já existe uma direção de curso para o curso ' + self.curso_id.codigo + '.')

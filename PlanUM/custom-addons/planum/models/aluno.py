@@ -36,20 +36,6 @@ class Aluno(models.Model):
         plano_curso_id = curso.plano_atual()
         plano_curso = self.env['planum.plano_curso'].browse(plano_curso_id)
 
-        # Verificar se o docente pode registar o aluno
-        """ucs = plano_curso.ucs
-        ids = []
-
-        for uc in ucs:
-            for docente in uc.docentes:
-                ids.append(docente.user_id.id)
-
-        docente_id = self._uid
-
-        if docente_id not in ids:
-            raise ValidationError('Para inscrever um aluno no curso ' + str(curso.codigo) + ' é necessário ser ' +
-                                  'docente de pelo menos uma UC do seu plano de curso atual.')"""
-
         uc_plano_estudos = self.env['planum.uc_plano_estudos']
         ano_atual = self.env['planum.ano_letivo'].search([]).ano
 

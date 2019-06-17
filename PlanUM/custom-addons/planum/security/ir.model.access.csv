@@ -1,17 +1,17 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_direcao_curso_plano_estudos,Direcao Curso a Plano Estudos,model_planum_plano_estudos,planum_group_direcao_curso,1,1,1,0
-access_direcao_curso_uc_plano_estudos,Direcao Curso a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_direcao_curso,1,1,1,0
+access_direcao_curso_plano_estudos,Direcao Curso a Plano Estudos,model_planum_plano_estudos,planum_group_direcao_curso,1,1,0,0
+access_direcao_curso_uc_plano_estudos,Direcao Curso a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_direcao_curso,1,1,0,0
 access_direcao_curso_curso,Direcao Curso a Curso,model_planum_curso,planum_group_direcao_curso,1,0,0,0
 access_direcao_curso_plano_curso,Direcao Curso a Plano Curso,model_planum_plano_curso,planum_group_direcao_curso,1,1,1,0
-access_direcao_curso_aluno,Direcao Curso a Aluno,model_planum_aluno,planum_group_direcao_curso,1,1,1,0
-access_direcao_curso_docente,Direcao Curso a Docente,model_planum_docente,planum_group_direcao_curso,1,1,1,0
-access_direcao_curso_direcao_curso,Direcao Curso a Direcao Curso,model_planum_direcao_curso,planum_group_direcao_curso,1,1,0,0
+access_direcao_curso_aluno,Direcao Curso a Aluno,model_planum_aluno,planum_group_direcao_curso,1,1,0,0
+access_direcao_curso_docente,Direcao Curso a Docente,model_planum_docente,planum_group_direcao_curso,1,1,0,0
+access_direcao_curso_direcao_curso,Direcao Curso a Direcao Curso,model_planum_direcao_curso,planum_group_direcao_curso,1,0,0,0
 access_direcao_curso_uc,Direcao Curso a UC,model_planum_uc,planum_group_direcao_curso,1,1,1,0
 access_direcao_curso_uc_plano_curso,Direcao Curso a UC Plano Curso,model_planum_uc_plano_curso,planum_group_direcao_curso,1,1,1,1
 access_direcao_curso_administrador,Direcao Curso a Administrador,model_planum_administrador,planum_group_direcao_curso,0,0,0,0
-access_direcao_curso_previsao,Direcao Curso a Previsao,model_planum_previsao,planum_group_direcao_curso,1,1,1,0
-access_direcao_curso_estatistica,Direcao Curso a Estatistica,model_planum_estatistica,planum_group_direcao_curso,1,1,1,0
-access_direcao_curso_ano_letivo,Direcao Curso a Ano Letivo,model_planum_ano_letivo,planum_group_direcao_curso,1,1,0,0
+access_direcao_curso_previsao,Direcao Curso a Previsao,model_planum_previsao,planum_group_direcao_curso,1,0,0,0
+access_direcao_curso_estatistica,Direcao Curso a Estatistica,model_planum_estatistica,planum_group_direcao_curso,1,0,0,0
+access_direcao_curso_ano_letivo,Direcao Curso a Ano Letivo,model_planum_ano_letivo,planum_group_direcao_curso,1,0,0,0
 access_aluno_plano_estudos,Aluno a Plano Estudos,model_planum_plano_estudos,planum_group_aluno,1,0,0,0
 access_aluno_uc_plano_estudos,Aluno a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_aluno,1,0,0,0
 access_aluno_curso,Aluno a Curso,model_planum_curso,planum_group_aluno,0,0,0,0
@@ -25,19 +25,19 @@ access_aluno_administrador,Aluno a Administrador,model_planum_administrador,plan
 access_aluno_previsao,Aluno a Previsao,model_planum_previsao,planum_group_aluno,0,0,0,0
 access_aluno_estatistica,Aluno a Estatistica,model_planum_estatistica,planum_group_aluno,0,0,0,0
 access_aluno_ano_letivo,Aluno a Ano Letivo,model_planum_ano_letivo,planum_group_aluno,1,0,0,0
-access_admin_plano_estudos,Admin a Plano Estudos,model_planum_plano_estudos,planum_group_admin,0,0,0,0
-access_admin_uc_plano_estudos,Admin a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_admin,0,0,0,0
+access_admin_plano_estudos,Admin a Plano Estudos,model_planum_plano_estudos,planum_group_admin,1,1,1,0
+access_admin_uc_plano_estudos,Admin a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_admin,1,1,1,0
 access_admin_curso,Admin a Curso,model_planum_curso,planum_group_admin,1,1,1,0
-access_admin_plano_curso,Admin a Plano Curso,model_planum_plano_curso,planum_group_admin,0,0,0,0
-access_admin_aluno,Admin a Aluno,model_planum_aluno,planum_group_admin,0,0,0,0
+access_admin_plano_curso,Admin a Plano Curso,model_planum_plano_curso,planum_group_admin,1,0,0,0
+access_admin_aluno,Admin a Aluno,model_planum_aluno,planum_group_admin,1,1,1,0
 access_admin_docente,Admin a Docente,model_planum_docente,planum_group_admin,1,1,1,0
 access_admin_direcao_curso,Admin a Direcao Curso,model_planum_direcao_curso,planum_group_admin,1,1,1,0
 access_admin_uc,Admin a UC,model_planum_uc,planum_group_admin,0,0,0,0
 access_admin_uc_plano_curso,Admin a UC Plano Curso,model_planum_uc_plano_curso,planum_group_admin,1,0,0,0
 access_admin_administrador,Admin a Administrador,model_planum_administrador,planum_group_admin,1,1,1,0
-access_admin_previsao,Administrador a Previsao,model_planum_previsao,planum_group_admin,0,0,0,0
-access_admin_estatistica,Administrador a Estatistica,model_planum_estatistica,planum_group_admin,0,0,0,0
-access_admin_ano_letivo,Administrador a Ano Letivo,model_planum_ano_letivo,planum_group_admin,0,0,0,0
+access_admin_previsao,Administrador a Previsao,model_planum_previsao,planum_group_admin,1,1,1,0
+access_admin_estatistica,Administrador a Estatistica,model_planum_estatistica,planum_group_admin,1,0,1,0
+access_admin_ano_letivo,Administrador a Ano Letivo,model_planum_ano_letivo,planum_group_admin,1,1,0,0
 access_docente_plano_estudos,Docente a PlanoEstudos,model_planum_plano_estudos,planum_group_docente,1,0,0,0
 access_docente_uc_plano_estudos,Docente a UC Plano Estudos,model_planum_uc_plano_estudos,planum_group_docente,1,0,0,0
 access_docente_curso,Docente a Curso,model_planum_curso,planum_group_docente,0,0,0,0

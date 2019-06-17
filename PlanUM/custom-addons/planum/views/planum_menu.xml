@@ -12,7 +12,12 @@
         (0, 0, {'view_mode': 'form', 'view_id': ref('planum.view_form_aluno')})]"/>
 	</record>
 	<!-- Item do menu para consultar alunos -->
-	<menuitem id="menu_aluno" name="Alunos" parent="menu_planum" action="action_aluno" groups="planum_group_docente,planum_group_direcao_curso" />
+	<menuitem
+            id="menu_aluno"
+            name="Alunos"
+            parent="menu_planum"
+            action="action_aluno"
+            groups="planum_group_docente,planum_group_direcao_curso,planum_group_admin" />
 	<!-- Ação para consultar perfil do aluno -->
     <record id="action_aluno_perfil" model="ir.actions.act_window">
         <field name="name">Perfil</field>
@@ -110,6 +115,6 @@
 	<!-- Ação para consultar o Ano Letivo -->
 	<act_window id="action_ano_letivo" name="Ano Letivo" res_model="planum.ano_letivo" view_mode="tree,form" />
 	<!-- Item do menu para consultar o Ano Letivo -->
-	<menuitem id="menu_ano_letivo" name="Ano Letivo" parent="menu_planum" action="action_ano_letivo" groups="planum_group_direcao_curso" />
+	<menuitem id="menu_ano_letivo" name="Ano Letivo" parent="menu_planum" action="action_ano_letivo" groups="planum_group_admin" />
 
 </odoo>

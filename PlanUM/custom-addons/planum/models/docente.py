@@ -12,31 +12,6 @@ class Docente(models.Model):
     ucs = fields.Many2many('planum.uc_plano_curso',string='UnidadesCurriculares')
     direcoes_curso = fields.Many2many('planum.direcao_curso', string='DirecoesCurso')
 
-    """@api.multi
-    def write(self, vals):
-        print("ok")
-        security_group_direcao_curso = self.env.ref('planum.planum_group_direcao_curso')
-        security_group_docente = self.env.ref('planum.planum_group_docente')
-
-        if 'direcoes_curso' in vals:
-            if len(vals['direcoes_curso']) == 0:
-                security_group_direcao_curso.write({
-                    'users': [(3, self._uid)]
-                })
-                security_group_docente.write({
-                    'users': [(4, self._uid)]
-                })
-
-            else:
-                security_group_direcao_curso.write({
-                    'users': [(4, self._uid)]
-                })
-                security_group_docente.write({
-                    'users': [(3, self._uid)]
-                })
-
-        return super().write(vals)"""
-
     @api.model
     def create(self, vals):
         # Verificar email

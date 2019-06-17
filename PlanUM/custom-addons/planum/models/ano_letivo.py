@@ -55,7 +55,6 @@ class Ano_Letivo(models.Model):
                         uc.nota = 0
 
             if creditos_feitos >= (creditos_totais-fator):
-                #sys.stdout.write("Passou de ano!\n" + str(creditos_feitos) + "/" + str(creditos_totais) + "\n\n")
                 aluno.ano += 1
             else:
                 reprovados.append(aluno.nr_mecanografico)
@@ -73,7 +72,7 @@ class Ano_Letivo(models.Model):
             if plano_curso_id:
                 plano_curso = self.env['planum.plano_curso'].browse(plano_curso_id)
                 for uc in plano_curso.ucs:
-                    prev[uc.designacao] =previsao.create({
+                    prev[uc.id] =previsao.create({
                         'ano': self.proximo_ano(),
                         'min': 0,
                         'med': 0,
@@ -88,7 +87,7 @@ class Ano_Letivo(models.Model):
             creditos = 60
             # Percorrer UCs por ordem
             for uc in sorted(aluno.plano_estudos_id.ucs, key=lambda uc: uc.ano):
-                previsao_atual = prev[uc.designacao]
+                previsao_atual = prev[uc.uc_plano_curso_id.id]
                 # Cadeira atrasada
                 if uc.ano < aluno.ano and uc.nota < 10 and uc.ano_conclusao == self.ano:
                     previsao_atual.min+=1

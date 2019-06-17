@@ -15,7 +15,7 @@
     <record id="planum_group_direcao_curso" model="res.groups">
         <field name="name">Direção de Curso</field>
         <field name="category_id" ref="module_planum_category"/>
-        <field name="implied_ids" eval="[(4, ref('base.group_user')),(4, ref('base.group_system'))]"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
     </record>
 
     <!-- PlanUM Docente Group -->
@@ -43,7 +43,6 @@
                    [('curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
-        <!--
            <record model="ir.rule" id="dc_planos_estudo_rule">
                <field name="name">Um diretor de curso vê apenas os planos de estudo dos alunos do seu curso</field>
                <field name="model_id" ref="model_planum_plano_estudos"/>
@@ -52,7 +51,6 @@
                    [('aluno.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
-           -->
            <record model="ir.rule" id="dc_planos_curso_rule">
                <field name="name">Um diretor de curso vê apenas os planos de curso do seu curso</field>
                <field name="model_id" ref="model_planum_plano_curso"/>
@@ -75,6 +73,22 @@
                <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
                <field name="domain_force">
                    [('docentes.user_id', '=', user.id)]
+               </field>
+           </record>
+           <record model="ir.rule" id="dc_estatisticas_rule">
+               <field name="name">Um diretor de curso vê apenas as previsões do seu curso</field>
+               <field name="model_id" ref="model_planum_previsao"/>
+               <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
+               <field name="domain_force">
+                   [('uc_plano_curso_id.plano_curso_id.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
+               </field>
+           </record>
+           <record model="ir.rule" id="dc_previsoes_rule">
+               <field name="name">Um diretor de curso vê apenas as estatisticas do seu curso</field>
+               <field name="model_id" ref="model_planum_estatistica"/>
+               <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
+               <field name="domain_force">
+                   [('uc_plano_curso_id.plano_curso_id.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
 
