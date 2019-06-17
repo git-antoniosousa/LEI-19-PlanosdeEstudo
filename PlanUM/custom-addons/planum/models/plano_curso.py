@@ -36,13 +36,17 @@ class Plano_Curso(models.Model):
                 'A data de fim deve ser posterior à data de início.')
 
         # Verificar se não existem planos de curso com datas coincidentes
-        planos_curso = self.env['planum.plano_curso'].search([('data_inicio', '>=', str(fields.Date.today())), ('id', '!=', self.id)])
+        planos_curso = self.env['planum.plano_curso'].search([('data_inicio', '>=', str(fields.Date.today())),
+                                                              ('id', '!=', self.id),
+                                                              ('curso_id', '=', self.curso_id.id)])
 
         for plano in planos_curso:
             if self.data_inicio <= plano.data_fim:
+                curso = self.env['planum.curso'].browse(self.curso_id.id)
                 raise ValidationError(
                     'Já existe um plano de curso definido de ' + str(plano.data_inicio) + ' a ' + str(plano.data_fim) +
-                    '. Não pode existir mais do que um plano de curso na mesma data.')
+                    ', para o curso ' + str(curso.codigo) + '. Não pode existir mais do que um plano de curso na '
+                    'mesma data.')
 
     @api.one
     def desativar(self):

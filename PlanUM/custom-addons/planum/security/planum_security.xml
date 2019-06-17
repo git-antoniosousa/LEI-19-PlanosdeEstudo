@@ -35,15 +35,15 @@
 
     <data noupdate="0">
         <!-- Record Rules de Direcao de Curso -->
-        <!--
            <record model="ir.rule" id="dc_alunos_curso_rule">
                <field name="name">Um diretor de curso vê apenas os alunos do seu curso</field>
                <field name="model_id" ref="model_planum_aluno"/>
                <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
                <field name="domain_force">
-                   [('aluno.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
+                   [('curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
+        <!--
            <record model="ir.rule" id="dc_planos_estudo_rule">
                <field name="name">Um diretor de curso vê apenas os planos de estudo dos alunos do seu curso</field>
                <field name="model_id" ref="model_planum_plano_estudos"/>
@@ -52,7 +52,8 @@
                    [('aluno.curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
-            <record model="ir.rule" id="dc_planos_curso_rule">
+           -->
+           <record model="ir.rule" id="dc_planos_curso_rule">
                <field name="name">Um diretor de curso vê apenas os planos de curso do seu curso</field>
                <field name="model_id" ref="model_planum_plano_curso"/>
                <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
@@ -60,7 +61,15 @@
                    [('curso_id.direcao_curso.docentes.user_id', '=', user.id)]
                </field>
            </record>
-            <record model="ir.rule" id="dc_direcao_curso_rule">
+           <record model="ir.rule" id="dc_curso_rule">
+               <field name="name">Um diretor de curso só pode criar alunos/planos de curso dos seus cursos</field>
+               <field name="model_id" ref="model_planum_curso"/>
+               <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
+               <field name="domain_force">
+                   [('direcao_curso.docentes.user_id', '=', user.id)]
+               </field>
+           </record>
+           <record model="ir.rule" id="dc_direcao_curso_rule">
                <field name="name">Um diretor de curso vê apenas a sua direção de curso</field>
                <field name="model_id" ref="model_planum_direcao_curso"/>
                <field name="groups" eval="[(4,ref('planum_group_direcao_curso'))]"/>
@@ -68,7 +77,6 @@
                    [('docentes.user_id', '=', user.id)]
                </field>
            </record>
-         -->
 
         <!-- Record Rules de Docentes -->
             <record model="ir.rule" id="docente_alunos_curso_rule">

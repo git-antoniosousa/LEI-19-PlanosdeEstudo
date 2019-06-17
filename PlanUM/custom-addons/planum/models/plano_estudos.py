@@ -11,8 +11,8 @@ class Plano_Estudos (models.Model):
     aluno = fields.One2many('planum.aluno', 'plano_estudos_id', 'Aluno')
     aluno_nr = fields.Char('Nº Aluno', related='aluno.nr_mecanografico')
 
-    media_parcial=fields.Float(compute='_compute_medias')
-    media_licenciatura=fields.Float(compute='_compute_medias')
+    media_parcial = fields.Float(compute='_compute_medias')
+    media_licenciatura = fields.Float(compute='_compute_medias')
 
     @api.depends('ucs')
     def _compute_medias(self):
