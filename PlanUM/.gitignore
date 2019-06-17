@@ -1,2 +1,4 @@
 custom-addons/planum/controllers/__pycache__/*
 custom-addons/planum/models/__pycache__/*
+*/__pycache__/*
+*.pyc

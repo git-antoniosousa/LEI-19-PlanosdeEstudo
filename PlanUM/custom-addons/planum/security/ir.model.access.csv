@@ -48,6 +48,6 @@ access_docente_direcao_curso,Docente a Direcao Curso,model_planum_direcao_curso,
 access_docente_uc,Docente a UC,model_planum_uc,planum_group_docente,0,0,0,0
 access_docente_uc_plano_curso,Docente a UC Plano Curso,model_planum_uc_plano_curso,planum_group_docente,0,0,0,0
 access_docente_administrador,Docente a Administrador,model_planum_administrador,planum_group_docente,0,0,0,0
-access_docente_previsao,Docente a Previsao,model_planum_previsao,planum_group_direcao_curso,0,0,0,0
-access_docente_estatistica,Docente a Estatistica,model_planum_estatistica,planum_group_direcao_curso,0,0,0,0
-access_docente_ano_letivo,Docente a Ano Letivo,model_planum_ano_letivo,planum_group_direcao_curso,0,0,0,0
+access_docente_previsao,Docente a Previsao,model_planum_previsao,planum_group_docente,0,0,0,0
+access_docente_estatistica,Docente a Estatistica,model_planum_estatistica,planum_group_docente,0,0,0,0
+access_docente_ano_letivo,Docente a Ano Letivo,model_planum_ano_letivo,planum_group_docente,1,0,0,0
