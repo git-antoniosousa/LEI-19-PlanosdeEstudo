@@ -99,9 +99,9 @@
 						<notebook>
 							<page string="Perfil">
 								<group>
-									<field name="name" />
+									<field name="name" readonly="1"/>
 									<field name="nr_mecanografico" />
-									<field name="email" />
+									<field name="email" readonly="1"/>
 									<field name="media_acesso" />
 									<field name="estatuto" widget="radio" />
 									<field name="curso_id" string="Curso"/>

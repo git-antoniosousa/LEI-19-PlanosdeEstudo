@@ -1,5 +1,4 @@
 from odoo import fields, models, api
-import sys
 import re
 from odoo.exceptions import ValidationError
 
@@ -81,7 +80,6 @@ class Ano_Letivo(models.Model):
                     })
 
         for aluno in alunos:
-            sys.stdout.write("Aluno " + str(aluno.nr_mecanografico) + "\n")
             creditos_atrasados = 0
             cadeiras_atrasadas = 0
             creditos = 60
@@ -93,7 +91,6 @@ class Ano_Letivo(models.Model):
                     previsao_atual.min+=1
                     previsao_atual.med+= 1
                     previsao_atual.max+= 1
-                    #sys.stdout.write("Cadeira atrasada " + uc.designacao + " \n" + str(previsao_atual.min) + "/" + str(previsao_atual.max) + ":" + str(previsao) + "\n\n")
                     creditos_atrasados+=uc.ects
                     cadeiras_atrasadas+=1
                     creditos-=uc.ects

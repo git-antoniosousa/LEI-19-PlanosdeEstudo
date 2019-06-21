@@ -3,13 +3,14 @@ from odoo import fields, models, api
 class Plano_Estudos (models.Model):
     _name = 'planum.plano_estudos'
     _description = 'Plano de Estudos'
-    _order = 'id desc'
+    _order = 'aluno_nome desc'
     _rec_name = 'aluno_nr'
     active = fields.Boolean('Active?', default=True)
 
     ucs = fields.One2many('planum.uc_plano_estudos', 'plano_estudos_id', 'Unidades Curriculares')
     aluno = fields.One2many('planum.aluno', 'plano_estudos_id', 'Aluno')
     aluno_nr = fields.Char('Nº Aluno', related='aluno.nr_mecanografico')
+    aluno_nome = fields.Char('Nome Aluno', related='aluno.name')
 
     media_parcial = fields.Float(compute='_compute_medias')
     media_licenciatura = fields.Float(compute='_compute_medias')

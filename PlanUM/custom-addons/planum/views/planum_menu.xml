@@ -12,7 +12,7 @@
         (0, 0, {'view_mode': 'form', 'view_id': ref('planum.view_form_aluno')})]"/>
 	</record>
 	<!-- Item do menu para consultar alunos -->
-	<menuitem id="menu_aluno_admin" name="Alunos" parent="menu_planum" action="action_aluno_admin" groups="planum_group_admin" />
+	<menuitem id="menu_aluno_admin" name="Alunos" parent="menu_planum" action="action_aluno_admin" groups="planum_group_admin" sequence="1"/>
 	<!-- Ação para consultar alunos -->
 	<record id="action_aluno_docente" model="ir.actions.act_window">
 		<field name="name">Alunos</field>
@@ -34,7 +34,7 @@
         (0, 0, {'view_mode': 'form', 'view_id': ref('planum.view_form_aluno_dc')})]"/>
 	</record>
 	<!-- Item do menu para consultar alunos -->
-	<menuitem id="menu_aluno_dc" name="Alunos" parent="menu_planum" action="action_aluno_dc" groups="planum_group_direcao_curso" />
+	<menuitem id="menu_aluno_dc" name="Alunos" parent="menu_planum" action="action_aluno_dc" groups="planum_group_direcao_curso"  sequence="1"/>
 
 	<!-- Ação para consultar perfil do aluno -->
 	<record id="action_aluno_perfil" model="ir.actions.act_window">

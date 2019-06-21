@@ -13,7 +13,7 @@ class Aluno(models.Model):
     estatuto = fields.Selection([(1,'Estudante'),(2,'Estudante Trabalhador'),(3,'Estudante Atleta')], default=1)
     ano = fields.Selection([(1,'1º ano'),(2,'2º ano'),(3,'3º ano'),(4,'4º ano'),(5,'5º ano'),(6,'6º ano')], default=1)
     plano_estudos_id = fields.Many2one('planum.plano_estudos', 'Plano Estudos ID')
-    curso_id = fields.Many2one('planum.curso', 'Curso ID')
+    curso_id = fields.Many2one('planum.curso', 'Curso')
     ucs_plano_estudos = fields.One2many('planum.uc_plano_estudos', 'plano_estudos_id', string='UCs Plano de Estudos', related='plano_estudos_id.ucs')
     media_parcial = fields.Float('Média Parcial', related='plano_estudos_id.media_parcial')
     media_licenciatura = fields.Float('Média Licenciatura', related='plano_estudos_id.media_licenciatura')

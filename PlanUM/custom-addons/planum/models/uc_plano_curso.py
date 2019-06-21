@@ -47,13 +47,14 @@ class UC_Plano_Curso (models.Model):
             uc.codigo_designacao = uc.codigo_plano + ' - ' + uc.designacao
 
     def previsao_atual(self):
-        prev=None
+        prev = None
         for previsao in self.previsoes:
             if prev is None or int(prev.ano[0:4]) < int(previsao.ano[0:4]):
-                prev=previsao
+                prev = previsao
         return prev
 
-    @api.constrains('uc_id', 'designacao', 'codigo_plano', 'fator')
+    @api.constrains('codigo_plano', 'ano', 'fator', 'uc_id')
     def uc_plano_estudos_check(self):
-        if not self.uc_id or not self.designacao or not self.codigo_plano or not self.fator:
-                raise ValidationError('É obrigatório preencher todos os campos do formulário.')
+        for uc_plano_curso in self:
+            if not uc_plano_curso.uc_id or not uc_plano_curso.ano or not uc_plano_curso.fator or not uc_plano_curso.codigo_plano:
+                raise ValidationError('É obrigatório preencher todos os campos do formulário das UCs.')

@@ -21,23 +21,21 @@ class Plano_Curso(models.Model):
             raise ValidationError(
                 'O plano de curso deve ter um curso e datas de início e fim devidamente definidas.')
 
-        # Verificar se as datam são posteriores ou iguais à data atual
-        elif self.data_inicio < fields.Date.today() or self.data_fim < fields.Date.today():
-            raise ValidationError(
-                'As datas de início e fim de um plano de curso não podem ser anteriores à data atual.')
-
         # Verificar se a data de início é anterior à de fim
         elif self.data_inicio >= self.data_fim:
             raise ValidationError(
                 'A data de fim deve ser posterior à data de início.')
 
         # Verificar se não existem planos de curso com datas coincidentes
-        planos_curso = self.env['planum.plano_curso'].search([('data_inicio', '>=', str(fields.Date.today())),
+        planos_curso = self.env['planum.plano_curso'].search([('data_fim', '>=', self.data_inicio),
+                                                              ('data_inicio', '<=', self.data_fim),
                                                               ('id', '!=', self.id),
                                                               ('curso_id', '=', self.curso_id.id)])
 
         for plano in planos_curso:
-            if self.data_inicio <= plano.data_fim:
+            if (self.data_inicio < plano.data_fim < self.data_fim) or (
+                    self.data_inicio < plano.data_inicio < self.data_fim) or (
+                    self.data_inicio >= plano.data_inicio and self.data_fim <= plano.data_fim):
                 curso = self.env['planum.curso'].browse(self.curso_id.id)
                 raise ValidationError(
                     'Já existe um plano de curso definido de ' + str(plano.data_inicio) + ' a ' + str(plano.data_fim) +
