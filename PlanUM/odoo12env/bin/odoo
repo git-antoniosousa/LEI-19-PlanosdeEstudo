@@ -1,7 +1,0 @@
-#!/home/claudia/MIEI/semestre_2/LEI/PlanUM/odoo12env/bin/python3
-# EASY-INSTALL-DEV-SCRIPT: 'odoo==12.0','odoo'
-__requires__ = 'odoo==12.0'
-__import__('pkg_resources').require('odoo==12.0')
-__file__ = '/home/claudia/MIEI/semestre_2/LEI/PlanUM/odoo/setup/odoo'
-with open(__file__) as f:
-    exec(compile(f.read(), __file__, 'exec'))
